@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../components/Header.js';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
@@ -9,10 +8,11 @@ import developerEmoji from '../images/developerEmoji.png'
 import heartEmoji from '../images/heartEmoji.png'
 import '../stylesheets/Home.scss';
 import '../stylesheets/index.scss';
+import Header from '../components/Header.js';
 
 const Home = () => (
     <div>
-    <Header/>
+        <Header/>
     <Row>
         <Col id="welcomeText">
             <div id='firstLine'>Hi, I'm Nate Karnes.</div>

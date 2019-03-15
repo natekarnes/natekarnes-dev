@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from '../components/Header.js';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Header from '../components/Header.js';
 
 const About = () => (
     <div>
-    <Header/>
+<Header/>
     <Row>
         <Col id="welcomeText">
             <div id='firstLine'>About Nate</div>
