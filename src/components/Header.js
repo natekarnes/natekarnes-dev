@@ -4,10 +4,8 @@ import Nav from 'react-bootstrap/Nav';
 import '../stylesheets/App.scss';
 
 
-export default class MyNavbar extends React.Component {
-    render(){
-      return (
 
+const Header = () => (
     <Navbar bg="light" variant="light">
       <Nav className="leftNav">
         <Nav.Link href="/">Home</Nav.Link>
@@ -15,6 +13,5 @@ export default class MyNavbar extends React.Component {
         <Nav.Link href="https://github.com/natekarnes">Github</Nav.Link>
       </Nav>
     </Navbar>
-      );
-    }
-}
+      )
+      export default Header;

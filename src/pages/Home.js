@@ -1,6 +1,5 @@
 import React from 'react';
-import Navbar from '../components/Navbar.js';
-// import Container from 'react-bootstrap/Container';
+import Header from '../components/Header.js';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
@@ -13,7 +12,7 @@ import '../stylesheets/index.scss';
 
 const Home = () => (
     <div>
-    <Navbar/>
+    <Header/>
     <Row>
         <Col id="welcomeText">
             <div id='firstLine'>Hi, I'm Nate Karnes.</div>
