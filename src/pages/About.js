@@ -2,6 +2,8 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Header from '../components/Header.js';
+import '../stylesheets/Home.scss';
+import '../stylesheets/index.scss';
 
 const About = () => (
     <div>
