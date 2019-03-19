@@ -1,7 +1,7 @@
 #welcomeText {
     text-align: left;
     margin-left: 4em;
-    margin-top: 10em;
+    margin-top: 12em;
 }
 #firstLine {
     font-size: 5em;
@@ -16,6 +16,22 @@
     text-align: left;
     margin-left: 3em;
     margin-top: 2em;
+    padding-bottom: 15em;
+}
+#welcomeSection {
+    margin-top: 1em;
+    background-color: #F9F9F9;
+    margin-bottom: 1.5em;
+}
+#aboutSection {
+    background-color: #F9F9F9;
+    margin-bottom: 5em;
+}
+#aboutText {
+    margin-top: 11em;
+    text-align: right;
+    margin-right: 4em;
+    margin-bottom: 13em;
 }
 @media screen and (max-width: 600px) {
     #firstLine {
