@@ -13,7 +13,6 @@ const Footer = () => (
          <Nav.Link href="https://twitter.com/natekarnes">Twitter</Nav.Link>
          <Nav.Link href="https://www.facebook.com/Nate-Karnes-Web-Developer-290672345190431">Facebook</Nav.Link>
          </Nav>
-         <span></span>
          <div id="copywrite">&copy; 2019 Nate Karnes</div>
     </Navbar>
       )

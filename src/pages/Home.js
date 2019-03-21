@@ -6,7 +6,7 @@ import mobileEmoji from '../images/mobileEmoji.png'
 import macbookEmoji from '../images/macbookEmoji.png'
 import developerEmoji from '../images/developerEmoji.png'
 import '../stylesheets/Home.scss';
-import '../stylesheets/index.scss';
+import '../stylesheets/App.scss';
 import Header from '../components/Header.js';
 import Footer from '../components/Footer.js';
 
@@ -15,14 +15,14 @@ const Home = () => (
         <Header/>
     <div id="welcomeSection">
     <Row>
-        <Col id="welcomeText">
-            <div id='firstLineHome'>Hi, I'm Nate Karnes.</div>
-            <div id='secondLineHome'>I develop web applications.</div>
+        <Col>
+            <div id='firstLine'>Hi, I'm Nate Karnes.</div>
+            <div id='secondLine'>I develop web applications.</div>
         </Col>
     </Row>
-    <Row id="welcomeEmoji">
+    <Row>
         <Col>
-            <Image ic="developerEmoji" width="50" src={developerEmoji} fluid />
+            <Image id="developerEmoji" width="50" src={developerEmoji} fluid />
             <Image id="macbookEmoji" width="50" src={macbookEmoji} fluid />
             <Image id="mobileEmoji" width="50" src={mobileEmoji} fluid />
         </Col>
