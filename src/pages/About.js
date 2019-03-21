@@ -1,20 +1,28 @@
-// import React from 'react';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
-// import Header from '../components/Header.js';
-// import '../stylesheets/Home.scss';
-// import '../stylesheets/index.scss';
+import React from 'react';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Header from '../components/Header.js';
+import Footer from '../components/Footer.js';
+import '../stylesheets/index.scss';
+import '../stylesheets/About.scss';
 
-// const About = () => (
-//     <div>
-// <Header/>
-//     <Row>
-//         <Col id="welcomeText">
-//             <div id='firstLine'>About Nate</div>
-//             <div id='secondLine'>is under construction. Above you can check out some of Nate's projects.</div>
-//         </Col>
-//     </Row>
-//     </div>
-// )
+const About = () => (
+    <div>
+<Header/>
+<div id="aboutSection"> 
+    <Row>
+        <Col id="aboutText">
+            <div id='firstLineAbout'>About Nate</div>
+            <div id='secondLineAbout'></div>
+        </Col>
+    </Row>
 
-// export default About;
+    </div>
+   
+    <footer id="footer">
+        <Footer/>
+        </footer>
+        </div>
+)
+
+export default About;

@@ -3,12 +3,12 @@
     margin-left: 4em;
     margin-top: 12em;
 }
-#firstLine {
+#firstLineHome {
     font-size: 5em;
     font-weight: bold;
     font-family: Helvetica, sans-serif;
 }
-#secondLine {
+#secondLineHome {
     font-size: 3em;
     font-family: Helvetica, sans-serif;
 }
@@ -23,16 +23,7 @@
     background-color: #F9F9F9;
     margin-bottom: 1.5em;
 }
-#aboutSection {
-    background-color: #F9F9F9;
-    margin-bottom: 5em;
-}
-#aboutText {
-    margin-top: 11em;
-    text-align: right;
-    margin-right: 4em;
-    margin-bottom: 13em;
-}
+
 @media screen and (max-width: 600px) {
     #firstLine {
       font-size: 4em;

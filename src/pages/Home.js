@@ -16,8 +16,8 @@ const Home = () => (
     <div id="welcomeSection">
     <Row>
         <Col id="welcomeText">
-            <div id='firstLine'>Hi, I'm Nate Karnes.</div>
-            <div id='secondLine'>I develop web applications.</div>
+            <div id='firstLineHome'>Hi, I'm Nate Karnes.</div>
+            <div id='secondLineHome'>I develop web applications.</div>
         </Col>
     </Row>
     <Row id="welcomeEmoji">
@@ -28,19 +28,10 @@ const Home = () => (
         </Col>
     </Row>
     </div>
-    <div id="aboutSection"> 
-    <Row>
-        <Col id="aboutText">
-            <div id='firstLine'>About Nate</div>
-            <div id='secondLine'></div>
-        </Col>
-    </Row>
-
-    </div>
-
+    
     <footer id="footer">
         <Footer/>
-        </footer>
+    </footer>
 
     </div>
 )

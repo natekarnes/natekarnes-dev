@@ -1,0 +1,36 @@
+#firstLineAbout {
+    font-size: 5em;
+    font-weight: bold;
+    font-family: Helvetica, sans-serif;
+}
+#secondLineAbout {
+    font-size: 3em;
+    font-family: Helvetica, sans-serif;
+    padding-bottom: 5em;
+}
+
+#aboutSection {
+    margin-top: 1em;
+    background-color: #F9F9F9;
+    margin-bottom: 1.5em;
+}
+#aboutText {
+    text-align: left;
+    margin-left: 4em;
+    margin-top: 12em;
+}
+@media screen and (max-width: 600px) {
+    #firstLine {
+      font-size: 4em;
+    }
+    #secondLine {
+        font-size: 2em;
+    }
+    #welcomeText {
+        margin-left: 1em;
+        margin-top: 5em;
+    }
+    #welcomeEmoji {
+        margin-left: 0.25em;
+    }
+  }
