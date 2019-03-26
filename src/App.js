@@ -13,12 +13,20 @@ const App = () => (
         <li>
           <Link to="/about">About</Link>
         </li>
+        <li>
+          <Link to="/skills">Skills</Link>
+        </li>
+        <li>
+          <Link to="/contact">Contact</Link>
+        </li>
       </ul>
 
       <hr />
 
       <Route exact path="/" component={Home} />
       <Route path="/about" component={About} />
+      <Route path="/skills" component={Skills} />
+      <Route path="/contact" component={Contact} />
 
     </div>
   </Router>

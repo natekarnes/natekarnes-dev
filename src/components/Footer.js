@@ -5,6 +5,7 @@ import '../stylesheets/App.scss';
 import '../stylesheets/Footer.scss';
 
 const Footer = () => (
+
     <Navbar bg="dark" variant="dark">
       <Nav>
          <Nav.Link href="https://github.com/natekarnes">Github</Nav.Link>

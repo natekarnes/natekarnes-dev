@@ -6,11 +6,17 @@ import '../stylesheets/Header.scss';
 
 
 const Header = () => (
-    <Navbar bg="dark" variant="dark">
-    <Nav>
+    <div>
+<Navbar bg="dark" variant='dark'>
+    <Nav className="justify-content-center">
         <Nav.Link href="/">Home</Nav.Link>
-        <Nav.Link href="/about">About</Nav.Link>
+        <Nav.Link disabled href="/about">About</Nav.Link>
+        <Nav.Link disabled href="/skills">Skills</Nav.Link>
+        <Nav.Link disabled href="/contact">Contact</Nav.Link>
     </Nav>
-    </Navbar>
+</Navbar>
+    </div>
       )
       export default Header;
+
+

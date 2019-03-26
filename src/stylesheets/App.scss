@@ -2,6 +2,7 @@
     font-family: Helvetica, sans-serif;
     color: white;
     padding-top: 40em;
+    display: block;
 }
 #copywrite {
     text-align: right;
@@ -23,12 +24,26 @@ html,body,div {
     overflow-x:hidden;
   }
 
+.br-mobile {
+    display: none;
+}
+
   @media only screen and (max-width: 600px) {
     #welcomeSection {
+        text-align: left;
         margin-top: 1em;
         background-color: #F9F9F9;
-        height: 50em;
+        height: 67em;
         padding-top: 7em;
         padding-left: 1em;
+    }
+    #firstLine {
+        text-align: left;
+    }
+    #secondLine {
+        text-align: left;
+    }
+    .br-mobile {
+        display: static;
     }
   }
