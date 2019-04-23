@@ -1,6 +1,6 @@
 #footer {
     font-family: Helvetica, sans-serif;
-    color: white;
+    color: black;
     padding-top: 40em;
     display: block;
 }
@@ -18,32 +18,72 @@
     font-family: Helvetica, sans-serif;
     padding-bottom: 0.5em;
     text-align: center;
+    color: black;
 }
 html,body,div {
     width:100%;
     overflow-x:hidden;
   }
-
-.br-mobile {
-    display: none;
+  #welcomeSection {
+    background-color: #F6F7F9;
+    height: 30em;
+    padding-top: 6em;
+    padding-left: 1em;
+    text-align: center;
 }
+#firstRow {
+    text-align: center;
+    padding-left: 2em;
+    padding-top: 1.9em;
+}
+
+#contactSection {
+    margin-top: 2em;
+    padding-left: 1em;
+}
+.contactList {
+    list-style: none;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+a:hover {
+    color: gray;
+    text-decoration: none;
+  }
+
 
   @media only screen and (max-width: 600px) {
     #welcomeSection {
         text-align: left;
         margin-top: 1em;
         background-color: #F9F9F9;
-        height: 67em;
+        height: 43em;
         padding-top: 7em;
         padding-left: 1em;
+        text-align: left;
     }
     #firstLine {
         text-align: left;
+        font-size: 60px;
     }
     #secondLine {
         text-align: left;
+        font-size: 35px;
     }
-    .br-mobile {
-        display: static;
+    #developerEmoji {
+        height: 40px;
+        width: 40px;
     }
+    #macbookEmoji {
+        height: 40px;
+        width: 40px;
+    }
+    #mobileEmoji {
+        height: 40px;
+        width: 40px;
+    }
+    
+
   }
