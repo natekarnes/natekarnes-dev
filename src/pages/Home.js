@@ -44,7 +44,7 @@ const Home = () => (
                 <ul>
                     <li className="contactList"><h3><a href="https://app.hellobonsai.com/u/natekarnes/contact">Contact Me</a></h3></li>
                     <li className="contactList"><h3><a href="https://github.com/natekarnes">My Github</a></h3></li>
-                    <li className="contactList"><h3><a href="https://www.facebook.com/Nate-Karnes-Web-Developer-290672345190431/">My Facebook</a></h3></li>
+                    <li className="contactList"><h3><a href="https://fb.me/natekarnesdeveloper">My Facebook</a></h3></li>
                     <li className="contactList"><h3><a href="https://instagram.com/natekarnes.dev">My Instagram</a></h3></li>
                     <li className="contactList"><h3><a href="https://twitter.com/natekarnes">My Twitter</a></h3></li>
                 </ul>
