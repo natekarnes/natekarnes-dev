@@ -3,11 +3,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
-import Image from 'react-bootstrap/Image';
-
-import links from '../images/links.png'
-import projects from '../images/projects.png'
-import skills from '../images/skills.png'
 import '../stylesheets/Home.scss';
 import '../stylesheets/App.scss';
 import Footer from '../components/Footer.js';
@@ -29,10 +24,10 @@ const Home = () => (
 <Container id="contactSection">
     <Row>
         <Col xs={12} md={4}>
-        <Card bg="light" style={{ width: '18rem' }}>
-    <Card.Header><Image id="links" width="70" src={links} fluid /></Card.Header>
+        <Card>
+    <Card.Header><h3>My Links</h3></Card.Header>
     <Card.Body>
-      <Card.Title>Links</Card.Title>
+      {/* <Card.Title>Links</Card.Title> */}
       <Card.Text>
 
                     <li className="contactList"> <a href="https://app.hellobonsai.com/u/natekarnes/contact">Contact Me</a> </li>
@@ -47,13 +42,13 @@ const Home = () => (
   <br />
         </Col>
         <Col xs={12} md={4}>
-        <Card bg="light" style={{ width: '18rem' }}>
-    <Card.Header><Image id="projects" width="70" src={projects} fluid /></Card.Header>
+        <Card>
+    <Card.Header><h3>My Projects</h3></Card.Header>
     <Card.Body>
-      <Card.Title>Projects</Card.Title>
+      {/* <Card.Title>Projects</Card.Title> */}
       <Card.Text>
 
-                    <li className="contactList"> Rocco Pizza </li>
+                    <li className="contactList"> <a href="http://www.roccopizza.com">Rocco Pizza</a></li>
                     <li className="contactList"> Children's Character Club </li>
 
       </Card.Text>
@@ -62,10 +57,10 @@ const Home = () => (
   <br />
         </Col>
         <Col xs={12} md={4}>
-        <Card bg="light" style={{ width: '18rem' }}>
-    <Card.Header><Image id="skills" width="70" src={skills} fluid /></Card.Header>
+        <Card>
+    <Card.Header><h3>My Skills</h3></Card.Header>
     <Card.Body>
-      <Card.Title>Skills</Card.Title>
+      {/* <Card.Title>Skills</Card.Title> */}
       <Card.Text>
 
       <li className="contactList"> Websites </li>

@@ -9,7 +9,7 @@ const Footer = () => (
 
 <Navbar bg="light" variant="light">
 
-    <div id="copywrite">&copy; 2019 Nate Karnes,&nbsp;<a href="https://www.flaticon.com/authors/flat-icons">Icons designed by Flat Icons from Flaticon</a></div> 
+    <div id="copywrite">&copy; 2019 Nate Karnes</div> 
 
 
 </Navbar>
