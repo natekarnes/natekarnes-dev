@@ -49,7 +49,7 @@ const Home = () => (
       <Card.Text>
 
                     <li className="contactList"> <a href="http://www.roccopizza.com">Rocco Pizza</a></li>
-                    <li className="contactList"> Children's Character Club </li>
+                    <li className="contactList"> <a href="http://www.childrenscharacter.club">Children's Character Club</a></li>
 
       </Card.Text>
     </Card.Body>
