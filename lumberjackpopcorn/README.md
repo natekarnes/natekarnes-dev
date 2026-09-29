@@ -22,11 +22,32 @@ python3 -m http.server 8000
 The contact form uses Netlify Forms, so submissions appear under **Forms** in the
 Netlify dashboard (turn on email notifications there).
 
+## Pages
+
+- `index.html`: corporate landing page (services, "trusted by", quote form)
+- `shop.html`: popcorn, seasonings, stickers, and merch
+- `thanks.html`: shown after either form is submitted
+
+Both forms (`corporate-quote` and `shop-order`) use Netlify Forms. Turn on
+email notifications under **Forms** in the Netlify dashboard.
+
+## Managing the shop
+
+All products live in `products.js`. Each one has a name, category, price,
+photo, and an optional `buyUrl`.
+
+- With no `buyUrl`, the button says **Add to order** and adds the item to the
+  order request form. You follow up by email to take payment.
+- Paste a checkout link into `buyUrl` (a Square online checkout link, Stripe
+  Payment Link, or Shopify Buy Button link) and the button becomes **Buy now**.
+- Set `comingSoon: true` to show a product without letting people order it.
+
 ## Things to customize
 
-- Flavors live in the `#flavors` section of `index.html` (currently the ones
-  seen on the trailer board and display labels).
-- Photos are in `images/`; they were cropped from Instagram screenshots, so
-  swapping in the original full-resolution photos will look sharper.
-- The header/favicon uses a simple popcorn icon; drop in the real lumberjack
-  logo (SVG or PNG) to replace it.
+- Prices in `products.js` (popcorn is $12 and stickers $4, taken from the
+  trailer menu board; seasonings have no price yet).
+- Product photos: seasonings and merch use icon placeholders.
+- Photos in `images/` were cropped from Instagram screenshots; the original
+  full-resolution photos will look sharper.
+- The header/favicon uses a simple popcorn icon; replace it with the real
+  lumberjack logo (SVG or PNG).
