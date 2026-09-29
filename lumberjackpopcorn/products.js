@@ -76,6 +76,15 @@ const PRODUCTS = [
     shopifyVariantId: '',
   },
   {
+    name: 'Enamel Camp Mug',
+    category: 'Merch',
+    description: 'A black enamel camp mug with the full-color Lumberjack. Made for coffee, cocoa, or a cup of kettle corn.',
+    price: null,
+    image: null,
+    icon: '☕',
+    shopifyVariantId: '',
+  },
+  {
     name: 'T-Shirts & Hoodies',
     category: 'Merch',
     description: 'Lumberjack Popcorn tees and hoodies are on the way. Check back soon.',
