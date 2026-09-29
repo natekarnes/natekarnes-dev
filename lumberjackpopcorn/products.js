@@ -6,6 +6,7 @@ const SHOPIFY_STORE = '';
 
 //   price:            number in dollars, or null to hide the price (Shopify's price is what's charged)
 //   image:            path to a photo, or null to show an icon placeholder
+//   illustration:     true for drawings on a transparent background (shown whole, not cropped)
 //   icon:             emoji shown when there is no image
 //   shopifyVariantId: the product's variant ID from Shopify. With this and SHOPIFY_STORE set,
 //                     the button becomes "Add to cart" and checkout happens on Shopify.
@@ -17,7 +18,8 @@ const PRODUCTS = [
     category: 'Popcorn',
     description: 'The classic. Sweet, salty, and crunchy in every handful.',
     price: 12,
-    image: 'images/closeup.jpg',
+    image: 'images/bag-kettle.webp',
+    illustration: true,
     shopifyVariantId: '',
   },
   {
@@ -25,7 +27,8 @@ const PRODUCTS = [
     category: 'Popcorn',
     description: 'Buttery caramel with a sprinkle of salt to balance the sweet.',
     price: 12,
-    image: 'images/mural-bag.jpg',
+    image: 'images/bag-caramel.webp',
+    illustration: true,
     shopifyVariantId: '',
   },
   {
@@ -33,7 +36,8 @@ const PRODUCTS = [
     category: 'Popcorn',
     description: 'Rich, golden, old-fashioned caramel corn with serious crunch.',
     price: 12,
-    image: 'images/shelves.jpg',
+    image: 'images/bag-caramel.webp',
+    illustration: true,
     shopifyVariantId: '',
   },
   {
@@ -41,16 +45,17 @@ const PRODUCTS = [
     category: 'Popcorn',
     description: 'Simple, savory, and hard to stop eating.',
     price: 12,
-    image: 'images/fair-125.jpg',
+    image: 'images/bag-kettle.webp',
+    illustration: true,
     shopifyVariantId: '',
   },
   {
-    name: 'Popcorn Seasonings',
+    name: 'Signature Seasoning',
     category: 'Seasonings',
-    description: 'Our house seasonings in a shaker jar. Make Lumberjack-style popcorn at home.',
+    description: 'Our house popcorn seasoning in an 8 oz shaker. Make Lumberjack-style popcorn at home.',
     price: null,
-    image: null,
-    icon: '🧂',
+    image: 'images/seasoning.webp',
+    illustration: true,
     shopifyVariantId: '',
   },
   {

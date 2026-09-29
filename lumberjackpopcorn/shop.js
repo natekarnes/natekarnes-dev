@@ -108,7 +108,7 @@ function productCard(p) {
   card.dataset.category = p.category;
 
   const media = p.image
-    ? `<img src="${p.image}" alt="" loading="lazy">`
+    ? `<img src="${p.image}" alt=""${p.illustration ? ' class="is-illustration"' : ''} loading="lazy">`
     : `<div class="product-placeholder" aria-hidden="true">${p.icon || '🍿'}</div>`;
   const price = p.price != null ? `<span class="price">${money(p.price)}</span>` : '';
 

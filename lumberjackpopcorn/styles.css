@@ -206,6 +206,14 @@ img { max-width: 100%; }
 .why { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
 .why li { border-left: 5px solid var(--red); padding: 4px 0 4px 16px; }
 
+/* Popcorn + lemonade combo */
+.combo { background: var(--forest); color: var(--cream); overflow: hidden; }
+.combo .container { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center; }
+.combo-cups { display: flex; justify-content: center; align-items: flex-end; gap: 8px; }
+.combo-cups img { width: 46%; max-width: 240px; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.35)); }
+.combo-cups img:last-child { width: 36%; max-width: 190px; }
+.combo p { margin: 12px 0 0; max-width: 520px; }
+
 /* Photo band */
 .photo-band { display: grid; grid-template-columns: repeat(4, 1fr); }
 .photo-band img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
@@ -251,6 +259,12 @@ img { max-width: 100%; }
 .product[hidden] { display: none; }
 .product-media { background: var(--cream-dark); }
 .product-media img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
+.product-media img.is-illustration {
+  object-fit: contain; padding: 18px;
+  background:
+    radial-gradient(circle at 50% 60%, #fff 0 45%, transparent 70%),
+    var(--cream-dark);
+}
 .product-placeholder {
   width: 100%; aspect-ratio: 1; display: grid; place-items: center; font-size: 5rem;
   background:
@@ -364,6 +378,8 @@ img { max-width: 100%; }
   .flavors-split, .split { grid-template-columns: 1fr; gap: 32px; }
   .flavors-photo { max-width: 420px; justify-self: center; }
   .photo-band { grid-template-columns: repeat(2, 1fr); }
+  .combo .container { grid-template-columns: 1fr; gap: 24px; }
+  .combo-cups { order: -1; }
   .form { padding: 24px; }
   .trusted-list li + li::before { display: none; }
 }
