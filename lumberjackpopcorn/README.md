@@ -24,7 +24,9 @@ Netlify dashboard (turn on email notifications there).
 
 ## Things to customize
 
-- Flavor names and descriptions in the `#flavors` section of `index.html`
-- The "Our Story" text
-- Market/event locations in `#find-us`
-- Add social links, phone, or photos as you have them
+- Flavors live in the `#flavors` section of `index.html` (currently the ones
+  seen on the trailer board and display labels).
+- Photos are in `images/`; they were cropped from Instagram screenshots, so
+  swapping in the original full-resolution photos will look sharper.
+- The header/favicon uses a simple popcorn icon; drop in the real lumberjack
+  logo (SVG or PNG) to replace it.
