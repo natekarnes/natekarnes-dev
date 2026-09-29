@@ -1,11 +1,16 @@
 // Shop catalog. Edit this list to add, remove, or change products.
 //
-//   price:      number in dollars, or null to hide the price
-//   image:      path to a photo, or null to show an icon placeholder
-//   icon:       emoji shown when there is no image
-//   buyUrl:     a checkout link (Square, Stripe Payment Link, Shopify Buy Button...).
-//               Leave empty and the button adds the item to the order request form instead.
-//   comingSoon: true shows the product but disables the button
+// SHOPIFY_STORE: your store's myshopify.com address, e.g. 'lumberjack-popcorn.myshopify.com'.
+// Leave it empty and every product falls back to the order request form.
+const SHOPIFY_STORE = '';
+
+//   price:            number in dollars, or null to hide the price (Shopify's price is what's charged)
+//   image:            path to a photo, or null to show an icon placeholder
+//   icon:             emoji shown when there is no image
+//   shopifyVariantId: the product's variant ID from Shopify. With this and SHOPIFY_STORE set,
+//                     the button becomes "Add to cart" and checkout happens on Shopify.
+//                     Without it, the button adds the item to the order request form.
+//   comingSoon:       true shows the product but disables the button
 const PRODUCTS = [
   {
     name: 'Original Kettle',
@@ -13,7 +18,7 @@ const PRODUCTS = [
     description: 'The classic. Sweet, salty, and crunchy in every handful.',
     price: 12,
     image: 'images/closeup.jpg',
-    buyUrl: '',
+    shopifyVariantId: '',
   },
   {
     name: 'Salted Caramel',
@@ -21,7 +26,7 @@ const PRODUCTS = [
     description: 'Buttery caramel with a sprinkle of salt to balance the sweet.',
     price: 12,
     image: 'images/mural-bag.jpg',
-    buyUrl: '',
+    shopifyVariantId: '',
   },
   {
     name: 'Caramel Corn',
@@ -29,7 +34,7 @@ const PRODUCTS = [
     description: 'Rich, golden, old-fashioned caramel corn with serious crunch.',
     price: 12,
     image: 'images/shelves.jpg',
-    buyUrl: '',
+    shopifyVariantId: '',
   },
   {
     name: 'Butter',
@@ -37,7 +42,7 @@ const PRODUCTS = [
     description: 'Simple, savory, and hard to stop eating.',
     price: 12,
     image: 'images/fair-125.jpg',
-    buyUrl: '',
+    shopifyVariantId: '',
   },
   {
     name: 'Popcorn Seasonings',
@@ -46,7 +51,7 @@ const PRODUCTS = [
     price: null,
     image: null,
     icon: '🧂',
-    buyUrl: '',
+    shopifyVariantId: '',
   },
   {
     name: 'Bigfoot Sticker',
@@ -54,7 +59,7 @@ const PRODUCTS = [
     description: 'Bigfoot with a bag of Lumberjack Popcorn. Made for water bottles, laptops, and bumpers.',
     price: 4,
     image: 'images/bigfoot.jpg',
-    buyUrl: '',
+    shopifyVariantId: '',
   },
   {
     name: 'Lumberjack Merch',
@@ -64,6 +69,6 @@ const PRODUCTS = [
     image: null,
     icon: '👕',
     comingSoon: true,
-    buyUrl: '',
+    shopifyVariantId: '',
   },
 ];

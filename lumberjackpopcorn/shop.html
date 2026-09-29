@@ -29,13 +29,17 @@
         <img src="favicon.svg" alt="" width="40" height="40">
         <span>Lumberjack <em>Popcorn</em></span>
       </a>
+      <button class="cart-btn" type="button" aria-haspopup="dialog" aria-label="Open cart" hidden>
+        <span aria-hidden="true">🛒</span><span class="cart-label"> Cart</span> <span class="cart-count" id="cart-count">0</span>
+      </button>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
       <nav id="nav-links" class="nav-links" aria-label="Main">
         <a href="index.html">For Business</a>
         <a href="shop.html" aria-current="page">Shop</a>
-        <a href="#order">Your Order</a>
+        <a href="#order" data-when="offline">Your Order</a>
+        <a href="#order" data-when="online" hidden>Questions</a>
         <a class="btn btn-small" href="index.html#quote">Request a Quote</a>
       </nav>
     </div>
@@ -46,7 +50,7 @@
       <div class="container">
         <p class="eyebrow">The Lumberjack Shop</p>
         <h1>Popcorn, seasonings, stickers &amp; merch.</h1>
-        <p class="lead">Take a little Lumberjack home. Ordering for a company event or a big group? <a href="index.html#quote">Request a corporate quote</a> instead.</p>
+        <p class="lead">Take a little Lumberjack home. We ship, or you can grab it at the trailer. Ordering for a company event or a big group? <a href="index.html#quote">Request a corporate quote</a> instead.</p>
       </div>
     </section>
 
@@ -66,8 +70,10 @@
     <section id="order" class="section section-cream-dark">
       <div class="container split">
         <div>
-          <h2 class="section-title">Your Order</h2>
-          <p>Online checkout is coming soon. For now, add items above or type what you'd like below, and we'll reply to confirm your total, payment, and pickup or shipping.</p>
+          <h2 class="section-title" data-when="offline">Your Order</h2>
+          <p data-when="offline">Online checkout is coming soon. For now, add items above or type what you'd like below, and we'll reply to confirm your total, payment, and pickup or shipping.</p>
+          <h2 class="section-title" data-when="online" hidden>Special Orders &amp; Questions</h2>
+          <p data-when="online" hidden>Need a big batch, a flavor that isn't listed, or local pickup instead of shipping? Send us a note and we'll sort it out.</p>
           <div class="side-note">
             <h3>Rather grab it in person?</h3>
             <p>Find the trailer at fairs, markets, and local shops. Follow <a href="https://www.instagram.com/lumberjackpopcorn/">@lumberjackpopcorn</a> for where we'll be next.</p>
@@ -76,8 +82,8 @@
         <form class="form" name="shop-order" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="shop-order">
           <p class="hidden"><label>Leave this empty: <input name="bot-field"></label></p>
-          <label>Items *
-            <textarea id="order-items" name="items" rows="5" required placeholder="e.g. 2 × Original Kettle, 1 × Bigfoot Sticker"></textarea>
+          <label>Items<span data-when="offline"> *</span>
+            <textarea id="order-items" name="items" rows="5" placeholder="e.g. 2 × Original Kettle, 1 × Bigfoot Sticker"></textarea>
           </label>
           <div class="form-row">
             <label>Name *
@@ -118,6 +124,20 @@
       <p class="copyright">&copy; <span id="year">2026</span> Lumberjack Popcorn Company</p>
     </div>
   </footer>
+
+  <dialog id="cart" class="cart" aria-labelledby="cart-title">
+    <div class="cart-head">
+      <h2 id="cart-title">Your Cart</h2>
+      <button class="cart-close" type="button" aria-label="Close cart">&times;</button>
+    </div>
+    <p class="cart-empty">Your cart is empty.</p>
+    <ul class="cart-items"></ul>
+    <div class="cart-foot">
+      <p class="cart-subtotal"><span>Subtotal</span> <strong id="cart-subtotal">$0.00</strong></p>
+      <p class="cart-note">Shipping and taxes are calculated at checkout.</p>
+      <button class="btn btn-block" id="checkout" type="button">Checkout</button>
+    </div>
+  </dialog>
 
   <script src="products.js"></script>
   <script src="main.js"></script>

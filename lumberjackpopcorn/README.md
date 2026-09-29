@@ -31,16 +31,30 @@ Netlify dashboard (turn on email notifications there).
 Both forms (`corporate-quote` and `shop-order`) use Netlify Forms. Turn on
 email notifications under **Forms** in the Netlify dashboard.
 
-## Managing the shop
+## Managing the shop (Shopify)
 
-All products live in `products.js`. Each one has a name, category, price,
-photo, and an optional `buyUrl`.
+The shop page keeps its own design and cart; checkout, payment, shipping, and
+taxes happen on Shopify using cart links
+(`https://STORE.myshopify.com/cart/VARIANT:QTY,...`).
 
-- With no `buyUrl`, the button says **Add to order** and adds the item to the
-  order request form. You follow up by email to take payment.
-- Paste a checkout link into `buyUrl` (a Square online checkout link, Stripe
-  Payment Link, or Shopify Buy Button link) and the button becomes **Buy now**.
-- Set `comingSoon: true` to show a product without letting people order it.
+1. Create the products in Shopify (any plan that includes online checkout),
+   set their prices and shipping rates there.
+2. In `products.js`, set `SHOPIFY_STORE` to your `something.myshopify.com`
+   address.
+3. For each product, set `shopifyVariantId`. To find it, open
+   `https://STORE.myshopify.com/products/PRODUCT-HANDLE.js` in a browser and
+   copy the `id` inside `variants` (for a product with several variants, such
+   as flavors or shirt sizes, each variant has its own ID). You can also open
+   the variant in the Shopify admin; the ID is the number at the end of the URL.
+4. Keep `price` in `products.js` matching Shopify. The site uses it for the
+   cart subtotal, but Shopify's price is what customers pay.
+
+Once a store is set, those products get **Add to cart** and a cart button
+appears in the header. Products without a variant ID still use the order
+request form, and `comingSoon: true` shows a product without letting people
+buy it. Keep `lumberjackpopcorn.com` pointed at Netlify; Shopify checkout runs
+on the myshopify.com address (or a subdomain like `shop.lumberjackpopcorn.com`
+if you connect one in Shopify).
 
 ## Things to customize
 
