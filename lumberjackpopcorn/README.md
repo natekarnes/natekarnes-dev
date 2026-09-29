@@ -63,5 +63,5 @@ if you connect one in Shopify).
 - Product photos: seasonings and merch use icon placeholders.
 - Photos in `images/` were cropped from Instagram screenshots; the original
   full-resolution photos will look sharper.
-- `images/logo-color.png` was cut from a photo of the logo sticker; swap in
-  the original full-color logo file for a sharper result.
+- `images/logo-white-text.png` (dark backgrounds) and `logo-black-text.png`
+  (light backgrounds) are the full-color logo; the badge and favicons use the lumberjack only.
