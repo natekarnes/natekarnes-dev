@@ -100,28 +100,25 @@ img { max-width: 100%; }
 .nav-toggle { display: none; background: none; border: 0; padding: 8px; cursor: pointer; }
 .nav-toggle span { display: block; width: 26px; height: 3px; margin: 5px 0; background: var(--cream); border-radius: 2px; }
 
-/* Illustrated PNW scene: sky, Mt. Rainier, tree line, and a shy Bigfoot */
-.scenic {
-  position: relative; overflow: hidden; color: var(--cream);
-  background:
-    url("images/clouds.svg") center top / min(1400px, 100%) auto no-repeat,
-    linear-gradient(180deg, #13301a 0%, #1f4626 45%, #3c6b33 78%, #7f9a48 100%);
+/* Buffalo plaid in brand greens */
+.plaid {
+  background-color: var(--green);
+  background-image:
+    linear-gradient(90deg, rgba(24,58,30,.6) 50%, transparent 50%),
+    linear-gradient(rgba(24,58,30,.6) 50%, transparent 50%);
+  background-size: 80px 80px;
+  color: var(--cream);
 }
-.scene { position: absolute; inset: 0; pointer-events: none; }
-.scene-mountain {
-  position: absolute; right: -8%; bottom: 40px; width: min(1150px, 74%); height: auto;
-}
-.scene-trees {
-  position: absolute; left: 0; right: 0; bottom: 0; height: 190px;
-  background: url("images/treeline.svg") repeat-x left bottom / auto 100%;
-}
-.scene-bigfoot { position: absolute; left: 3%; bottom: -8px; width: 190px; height: auto; }
-.scenic > .container, .thanks-card { position: relative; z-index: 1; }
 
 /* Hero */
+.hero, .page-hero { position: relative; }
+.hero::before, .page-hero::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(24,58,30,.95) 0%, rgba(24,58,30,.82) 55%, rgba(24,58,30,.4) 100%);
+}
 .hero-inner {
-  position: relative; padding: 80px 0 230px;
-  display: grid; grid-template-columns: minmax(0, 620px); gap: 48px; align-items: center;
+  position: relative; padding: 80px 0 90px;
+  display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center;
 }
 .eyebrow {
   text-transform: uppercase; letter-spacing: .12em; font-weight: 700;
@@ -131,9 +128,13 @@ img { max-width: 100%; }
 .lead { font-size: 1.25rem; max-width: 580px; margin: 0 0 32px; }
 .lead a { color: var(--olive); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
-.page-hero .container { position: relative; padding: 72px 0 200px; }
-.page-hero .scene-mountain { width: min(760px, 50%); bottom: 40px; }
-.page-hero .scene-bigfoot { left: auto; right: 3%; width: 120px; }
+.hero-photo { margin: 0; justify-self: end; }
+.hero-photo img {
+  display: block; width: 100%; max-width: 380px; height: auto;
+  border-radius: var(--radius); border: 6px solid var(--cream);
+  box-shadow: 0 20px 40px rgba(0,0,0,.45); transform: rotate(2deg);
+}
+.page-hero .container { position: relative; padding: 72px 0 64px; }
 .page-hero .lead { margin-bottom: 0; }
 
 /* Trusted by */
@@ -270,7 +271,10 @@ img { max-width: 100%; }
 }
 .product-placeholder {
   width: 100%; aspect-ratio: 1; display: grid; place-items: center; font-size: 5rem;
-  background: radial-gradient(circle at 50% 55%, #fff 0 40%, var(--cream-dark) 72%);
+  background:
+    linear-gradient(90deg, rgba(63,117,44,.12) 50%, transparent 50%),
+    linear-gradient(rgba(63,117,44,.12) 50%, transparent 50%);
+  background-size: 40px 40px;
 }
 .product-body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; }
 .product-cat {
@@ -335,8 +339,7 @@ img { max-width: 100%; }
 .cart-note { margin: 0 0 16px; color: var(--muted); font-size: .95rem; }
 
 /* Thanks page */
-.thanks-page { min-height: 100vh; display: grid; place-items: center; padding: 24px 16px 200px; }
-.thanks-page .scene { position: fixed; }
+.thanks-page { min-height: 100vh; display: grid; place-items: center; padding: 24px 16px; }
 .thanks-card {
   background: var(--cream); color: var(--ink); text-align: center;
   padding: 48px 32px; border-radius: var(--radius); max-width: 520px; width: 100%;
@@ -371,10 +374,9 @@ img { max-width: 100%; }
   .nav-links a { padding: 12px 0; }
   .nav-links .btn { margin-top: 8px; }
 
-  .scene-mountain, .page-hero .scene-mountain { width: 150%; right: -25%; bottom: 40px; }
-  .scene-trees { height: 150px; }
-  .scene-bigfoot, .page-hero .scene-bigfoot { width: 120px; left: auto; right: 6px; }
-  .hero-inner { padding: 56px 0 190px; grid-template-columns: 1fr; gap: 36px; }
+  .hero-inner { padding: 56px 0 64px; grid-template-columns: 1fr; gap: 36px; }
+  .hero-photo { justify-self: center; }
+  .hero-photo img { max-width: 300px; }
   .section { padding: 64px 0; }
   .steps { grid-template-columns: 1fr; gap: 24px; }
   .flavors-split, .split { grid-template-columns: 1fr; gap: 32px; }
