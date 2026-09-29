@@ -50,6 +50,15 @@ const PRODUCTS = [
     shopifyVariantId: '',
   },
   {
+    name: 'Jalapeño Cheddar',
+    category: 'Popcorn',
+    description: 'Cheddar cheese with a jalapeño kick.',
+    price: 12,
+    image: 'images/bag-kettle.webp',
+    illustration: true,
+    shopifyVariantId: '',
+  },
+  {
     name: 'Signature Seasoning',
     category: 'Seasonings',
     description: 'Our house popcorn seasoning in an 8 oz shaker. Make Lumberjack-style popcorn at home.',
@@ -82,6 +91,14 @@ const PRODUCTS = [
     price: null,
     image: null,
     icon: '☕',
+    shopifyVariantId: '',
+  },
+  {
+    name: 'Popcorn Earrings',
+    category: 'Merch',
+    description: 'Tiny popcorn-box earrings in red and white stripes. A fun gift for any popcorn lover.',
+    price: null,
+    image: 'images/earrings.jpg',
     shopifyVariantId: '',
   },
   {
