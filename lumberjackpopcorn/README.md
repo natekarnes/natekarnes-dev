@@ -58,8 +58,8 @@ if you connect one in Shopify).
 
 ## Things to customize
 
-- Prices in `products.js` (popcorn is $12 and stickers $4, taken from the
-  trailer menu board; seasonings have no price yet).
+- Prices in `products.js` (popcorn $12, seasonings $8, stickers $4; hats need
+  a price).
 - Product photos: seasonings and merch use icon placeholders.
 - Photos in `images/` were cropped from Instagram screenshots; the original
   full-resolution photos will look sharper.
