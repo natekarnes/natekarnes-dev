@@ -78,7 +78,6 @@ img { max-width: 100%; }
 .site-header {
   position: sticky; top: 0; z-index: 50;
   background: var(--forest);
-  border-bottom: 4px solid var(--red);
 }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
 .brand {
@@ -365,10 +364,9 @@ img { max-width: 100%; }
   .nav-toggle { display: block; }
   .nav-links {
     display: none;
-    position: absolute; top: 72px; left: 0; right: 0;
+    position: absolute; top: 68px; left: 0; right: 0;
     flex-direction: column; align-items: stretch; gap: 0;
     background: var(--forest); padding: 8px 16px 20px;
-    border-bottom: 4px solid var(--red);
   }
   .nav-links.open { display: flex; }
   .nav-links a { padding: 12px 0; }
