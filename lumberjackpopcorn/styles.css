@@ -87,8 +87,8 @@ img { max-width: 100%; }
 }
 .brand:hover { color: var(--cream); }
 .brand img { border-radius: 50%; }
-.hero-logo { display: block; width: 150px; height: auto; margin-bottom: 20px; }
-.footer-logo { display: block; width: 110px; height: auto; margin-bottom: 12px; }
+.hero-logo { display: block; width: 160px; height: auto; margin-bottom: 20px; filter: drop-shadow(0 8px 16px rgba(0,0,0,.35)); transform: rotate(-3deg); }
+.footer-logo { display: block; width: 120px; height: auto; margin-bottom: 12px; }
 .thanks-logo { width: 160px; height: auto; }
 .brand em, .brand-foot em { font-style: normal; color: var(--olive); }
 .nav-links { display: flex; align-items: center; gap: 24px; }

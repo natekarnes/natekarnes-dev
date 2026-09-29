@@ -63,5 +63,5 @@ if you connect one in Shopify).
 - Product photos: seasonings and merch use icon placeholders.
 - Photos in `images/` were cropped from Instagram screenshots; the original
   full-resolution photos will look sharper.
-- Logos in `images/logo-*.png` were traced from the bag illustration; swap in
-  the original logo files (and the full-color version) if you have them.
+- `images/logo-color.png` was cut from a photo of the logo sticker; swap in
+  the original full-color logo file for a sharper result.
