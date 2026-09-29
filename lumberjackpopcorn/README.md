@@ -63,5 +63,5 @@ if you connect one in Shopify).
 - Product photos: seasonings and merch use icon placeholders.
 - Photos in `images/` were cropped from Instagram screenshots; the original
   full-resolution photos will look sharper.
-- The header/favicon uses a simple popcorn icon; replace it with the real
-  lumberjack logo (SVG or PNG).
+- Logos in `images/logo-*.png` were traced from the bag illustration; swap in
+  the original logo files (and the full-color version) if you have them.

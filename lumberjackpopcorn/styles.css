@@ -86,6 +86,10 @@ img { max-width: 100%; }
   color: var(--cream); text-decoration: none; font-size: 1.35rem; font-weight: 400;
 }
 .brand:hover { color: var(--cream); }
+.brand img { border-radius: 50%; }
+.hero-logo { display: block; width: 150px; height: auto; margin-bottom: 20px; }
+.footer-logo { display: block; width: 110px; height: auto; margin-bottom: 12px; }
+.thanks-logo { width: 160px; height: auto; }
 .brand em, .brand-foot em { font-style: normal; color: var(--olive); }
 .nav-links { display: flex; align-items: center; gap: 24px; }
 .nav-links a:not(.btn) { color: var(--cream); text-decoration: none; }
@@ -392,6 +396,7 @@ img { max-width: 100%; }
   .brand img { width: 34px; height: 34px; }
   .cart-label { display: none; }
   .cart-btn { margin-right: 8px; padding: 4px 10px; }
+  .hero-logo { width: 120px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
