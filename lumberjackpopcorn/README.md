@@ -58,8 +58,8 @@ if you connect one in Shopify).
 
 ## Things to customize
 
-- Prices in `products.js` (popcorn $12, seasonings $8, stickers $4; hats need
-  a price).
+- Prices in `products.js` (popcorn $12, seasonings $8, stickers $4, hat $30,
+  mug $12, earrings $10).
 - Product photos: seasonings and merch use icon placeholders.
 - Photos in `images/` were cropped from Instagram screenshots; the original
   full-resolution photos will look sharper.
