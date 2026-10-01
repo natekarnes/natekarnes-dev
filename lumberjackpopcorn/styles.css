@@ -270,6 +270,7 @@ img { max-width: 100%; }
 .family-loves li { background: #fff; }
 .family-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .family-grid img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); }
+.family-grid img.pos-top { object-position: center top; }
 @media (max-width: 860px) { .family-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
 .about-cta { text-align: center; }
 .about-cta .section-sub { margin-inline: auto; margin-bottom: 28px; }
