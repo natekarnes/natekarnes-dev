@@ -78,7 +78,17 @@ img { max-width: 100%; }
 .site-header {
   position: sticky; top: 0; z-index: 50;
   background: var(--forest);
+  transition: background-color .25s ease;
 }
+/* Over the painted hero, the bar is a frosted, blurred strip of the painting. */
+.site-header.is-over-hero {
+  background: rgba(16, 40, 22, .22);
+  -webkit-backdrop-filter: blur(14px) saturate(1.15);
+  backdrop-filter: blur(14px) saturate(1.15);
+}
+.site-header.is-over-hero .nav-links a:not(.btn), .site-header.is-over-hero .brand { text-shadow: 0 1px 6px rgba(0,0,0,.45); }
+/* The hero extends up behind the header. */
+.hero, .page-hero { margin-top: -68px; }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
 .brand {
   display: flex; align-items: center; gap: 10px;
@@ -116,7 +126,7 @@ img { max-width: 100%; }
   background: linear-gradient(90deg, rgba(16,40,22,.92) 0%, rgba(16,40,22,.78) 38%, rgba(16,40,22,.25) 62%, rgba(16,40,22,0) 75%);
 }
 .hero-inner {
-  position: relative; padding: 80px 0 100px;
+  position: relative; padding: 148px 0 100px;
   display: grid; grid-template-columns: minmax(0, 600px); gap: 48px; align-items: center;
 }
 .eyebrow {
@@ -127,7 +137,7 @@ img { max-width: 100%; }
 .lead { font-size: 1.25rem; max-width: 580px; margin: 0 0 32px; }
 .lead a { color: var(--olive); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
-.page-hero .container { position: relative; padding: 72px 0 64px; }
+.page-hero .container { position: relative; padding: 140px 0 64px; }
 @media (max-width: 860px) { .page-hero .container { padding-bottom: 350px; } }
 .page-hero .lead { margin-bottom: 0; }
 .page-hero h1 { max-width: 640px; }
@@ -370,7 +380,7 @@ img { max-width: 100%; }
   .nav-links .btn { margin-top: 8px; }
 
   .hero::before, .page-hero::before { background: linear-gradient(180deg, var(--forest) 0%, var(--forest) calc(100% - 340px), rgba(24,58,30,0) calc(100% - 250px)); }
-  .hero-inner { padding: 56px 0 370px; grid-template-columns: 1fr; gap: 36px; }
+  .hero-inner { padding: 124px 0 370px; grid-template-columns: 1fr; gap: 36px; }
   .section { padding: 64px 0; }
   .steps { grid-template-columns: 1fr; gap: 24px; }
   .flavors-split, .split { grid-template-columns: 1fr; gap: 32px; }
