@@ -268,10 +268,19 @@ img { max-width: 100%; }
 .family-loves-intro { margin-bottom: 12px; }
 .family-loves { margin-bottom: 36px; }
 .family-loves li { background: #fff; }
-.family-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.family-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.papa { align-items: center; }
+.papa p { color: var(--muted); }
+.papa-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.papa-photos img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); }
+.papa-photos img:first-child { object-position: 78% center; }
+.papa-photos img:last-child { object-position: 30% center; }
 .family-grid img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); }
 .family-grid img.pos-top { object-position: center top; }
-@media (max-width: 860px) { .family-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+@media (max-width: 860px) {
+  .family-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .family-grid img:last-child { grid-column: span 2; aspect-ratio: 4 / 3; object-position: center 75%; }
+}
 .about-cta { text-align: center; }
 .about-cta .section-sub { margin-inline: auto; margin-bottom: 28px; }
 .about-cta .hero-actions { justify-content: center; }
