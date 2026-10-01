@@ -255,9 +255,9 @@ img { max-width: 100%; }
 }
 .about-quote p { margin: 0 0 8px; color: var(--forest); font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 1.35rem; line-height: 1.35; }
 .about-quote cite { font-style: normal; font-weight: 700; color: var(--green); font-size: .95rem; }
-.about-figures { display: grid; gap: 28px; }
 .about-figure { margin: 0; }
-.about-figures .about-figure:last-child .about-photo { aspect-ratio: 4 / 3; object-fit: cover; object-position: center 45%; }
+@media (min-width: 861px) { .about-story .about-figure { position: sticky; top: 100px; } }
+
 .about-figure figcaption { margin-top: 12px; color: var(--muted); font-size: .95rem; text-align: center; }
 .about-photo { width: 100%; height: auto; border-radius: var(--radius); box-shadow: var(--shadow); }
 .values-list .step-num { background: var(--white); font-size: 1.4rem; }
@@ -272,11 +272,14 @@ img { max-width: 100%; }
 .family-loves { margin-bottom: 36px; }
 .family-loves li { background: #fff; }
 .family-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
-.papa { align-items: center; }
+.papa { align-items: start; }
 .papa p { color: var(--muted); }
 .papa-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .papa-photos img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); }
-.papa-photos img:first-child { object-position: center 30%; }
+.papa-wide { grid-column: span 2; margin: 0; }
+.papa-wide img { aspect-ratio: 16 / 10 !important; object-position: center 40%; }
+.papa-wide figcaption { margin-top: 10px; color: var(--muted); font-size: .95rem; text-align: center; }
+.papa-photos > img:nth-child(2) { object-position: center 30%; }
 .papa-photos img:last-child { object-position: left center; }
 .family-grid img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); }
 .family-grid img.pos-top { object-position: center top; }
