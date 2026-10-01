@@ -98,6 +98,7 @@ img { max-width: 100%; }
 }
 .brand:hover { color: var(--white); }
 .brand .co-short { display: none; }
+.brand em { white-space: nowrap; }
 .hero-logo { display: block; width: 150px; height: auto; margin-bottom: 20px; filter: drop-shadow(0 6px 14px rgba(0,0,0,.3)); }
 .footer-logo { display: block; width: 130px; height: auto; margin-bottom: 12px; }
 .thanks-logo { width: 160px; height: auto; }
@@ -197,7 +198,12 @@ img { max-width: 100%; }
   border-top: 6px solid var(--green);
 }
 .card h3 { margin: 0 0 10px; font-size: 1.4rem; color: var(--forest); }
+.card { display: flex; flex-direction: column; }
 .card p { margin: 0; color: var(--muted); }
+.card-link { margin-top: auto; padding-top: 18px; font-weight: 700; text-decoration: none; color: var(--green); }
+.card-link:hover { color: var(--forest); text-decoration: underline; }
+.section-cta { margin-top: 44px; }
+.header-quote { display: none; }
 .card-icon {
   width: 56px; height: 56px; border-radius: 50%;
   display: grid; place-items: center; font-size: 1.7rem;
@@ -382,6 +388,10 @@ img { max-width: 100%; }
 /* Mobile */
 @media (max-width: 860px) {
   .nav-toggle { display: block; }
+  /* On phones the menu button hides the header CTA, so keep a compact quote button visible. */
+  .header-quote { display: inline-block; flex-shrink: 0; white-space: nowrap; margin-left: auto; margin-right: 8px; padding: 5px 14px; font-size: .9rem;
+    background: var(--olive); border-color: var(--olive); color: var(--forest); }
+  .nav .brand { min-width: 0; }
   .brand .co-full { display: none; }
   .brand .co-short { display: inline; }
   .nav-links {
@@ -408,11 +418,15 @@ img { max-width: 100%; }
   .trusted-list li + li::before { display: none; }
 }
 
+@media (max-width: 380px) {
+  .header-quote .hq-long { display: none; }
+}
+
 @media (max-width: 520px) {
   .form-row { grid-template-columns: 1fr; }
   .trusted-list { gap: 4px 20px; }
   .trusted-list li { font-size: 1.1rem; }
-  .brand { font-size: 1.15rem; }
+  .brand { font-size: 1.05rem; }
   .cart-label { display: none; }
   .cart-btn { margin-right: 8px; padding: 4px 10px; }
   .hero-logo { width: 140px; }

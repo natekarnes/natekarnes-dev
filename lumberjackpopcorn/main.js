@@ -29,5 +29,13 @@ if (header && hero) {
   if (toggle) toggle.addEventListener('click', update);
 }
 
+// "Book the trailer" style links pre-select the matching option in the quote form.
+document.querySelectorAll('[data-order-type]').forEach((link) => {
+  link.addEventListener('click', () => {
+    const select = document.querySelector('select[name="order-type"]');
+    if (select) select.value = link.dataset.orderType;
+  });
+});
+
 const year = document.getElementById('year');
 if (year) year.textContent = new Date().getFullYear();
