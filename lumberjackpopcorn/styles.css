@@ -249,6 +249,11 @@ img { max-width: 100%; }
 /* About page */
 .about-story { align-items: center; }
 .about-story p { color: var(--muted); }
+.about-quote {
+  margin: 24px 0; padding: 4px 0 4px 20px; border-left: 5px solid var(--olive);
+}
+.about-quote p { margin: 0 0 8px; color: var(--forest); font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 1.35rem; line-height: 1.35; }
+.about-quote cite { font-style: normal; font-weight: 700; color: var(--green); font-size: .95rem; }
 .about-photo { width: 100%; height: auto; border-radius: var(--radius); box-shadow: var(--shadow); }
 .values-list .step-num { background: var(--white); font-size: 1.4rem; }
 .places { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }

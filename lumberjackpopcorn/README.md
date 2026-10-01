@@ -25,7 +25,7 @@ Netlify dashboard (turn on email notifications there).
 ## Pages
 
 - `index.html`: corporate landing page (services, "trusted by", quote form)
-- `about.html`: about us / story (edit the "Our Story" paragraphs with your history)
+- `about.html`: about us and the founding story (Nate and Greg, 2019)
 - `shop.html`: popcorn, seasonings, stickers, and merch
 - `thanks.html`: shown after either form is submitted
 
