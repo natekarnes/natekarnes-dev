@@ -115,6 +115,7 @@ img { max-width: 100%; }
 /* Painted PNW background: Mt. Rainier with Bigfoot peeking from the trees */
 .forest-bg {
   background: var(--forest) url("images/hero-bigfoot.jpg") right bottom / cover no-repeat;
+  background-image: image-set(url("images/hero-bigfoot.webp") type("image/webp"), url("images/hero-bigfoot.jpg") type("image/jpeg"));
   color: var(--white);
 }
 /* Keep the hero close to the painting's own 16:9 shape so it isn't enlarged and cropped. */
