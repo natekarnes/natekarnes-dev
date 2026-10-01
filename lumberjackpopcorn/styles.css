@@ -19,7 +19,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 76px; }
 
 body {
   margin: 0;
-  font-family: "Source Sans 3", system-ui, sans-serif;
+  font-family: "DM Sans", system-ui, sans-serif;
   font-size: 1.1rem;
   line-height: 1.6;
   color: var(--ink);
@@ -27,8 +27,8 @@ body {
 }
 
 h1, h2, h3, .brand, .brand-foot {
-  font-family: "Alfa Slab One", Georgia, serif;
-  font-weight: 400;
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600; letter-spacing: -.01em;
   line-height: 1.15;
 }
 
@@ -91,7 +91,7 @@ img { max-width: 100%; }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
 .brand {
   display: flex; align-items: center; gap: 10px;
-  color: var(--white); text-decoration: none; font-size: 1.35rem; font-weight: 400;
+  color: var(--white); text-decoration: none; font-size: 1.35rem; font-weight: 600;
 }
 .brand:hover { color: var(--white); }
 .brand img { border-radius: 50%; }
@@ -153,7 +153,7 @@ img { max-width: 100%; }
   display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 28px;
 }
 .trusted-list li {
-  font-family: "Alfa Slab One", Georgia, serif; font-size: 1.3rem; color: var(--forest);
+  font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 1.3rem; color: var(--forest);
 }
 .trusted-list li + li::before {
   content: "•"; color: var(--olive); margin-right: 28px;
@@ -206,7 +206,7 @@ img { max-width: 100%; }
 .step-num {
   display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
   background: var(--olive); color: var(--forest);
-  font-family: "Alfa Slab One", Georgia, serif; font-size: 1.3rem; margin-bottom: 12px;
+  font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 1.3rem; margin-bottom: 12px;
 }
 .steps h3 { margin: 0 0 8px; color: var(--olive); font-size: 1.35rem; }
 .steps p { margin: 0; }
@@ -286,10 +286,7 @@ img { max-width: 100%; }
 }
 .product-placeholder {
   width: 100%; aspect-ratio: 1; display: grid; place-items: center; font-size: 5rem;
-  background:
-    linear-gradient(90deg, rgba(63,117,44,.12) 50%, transparent 50%),
-    linear-gradient(rgba(63,117,44,.12) 50%, transparent 50%);
-  background-size: 40px 40px;
+  background: radial-gradient(circle at 50% 55%, #fff 0 40%, var(--sky) 72%);
 }
 .product-body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; }
 .product-cat {
@@ -299,7 +296,7 @@ img { max-width: 100%; }
 .product h3 { margin: 0 0 8px; font-size: 1.3rem; color: var(--forest); }
 .product-body > p:not(.product-cat) { margin: 0 0 18px; color: var(--muted); font-size: 1rem; }
 .product-foot { margin-top: auto; display: grid; gap: 12px; }
-.price { font-family: "Alfa Slab One", Georgia, serif; font-size: 1.4rem; color: var(--forest); }
+.price { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 1.4rem; color: var(--forest); }
 
 /* Cart */
 [hidden] { display: none !important; }
