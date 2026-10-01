@@ -85,7 +85,10 @@ img { max-width: 100%; }
   -webkit-backdrop-filter: blur(14px) saturate(1.15);
   backdrop-filter: blur(14px) saturate(1.15);
 }
-.site-header.is-over-hero .nav-links a:not(.btn), .site-header.is-over-hero .brand { text-shadow: 0 1px 6px rgba(0,0,0,.45); }
+.site-header.is-over-hero .nav-links a:not(.btn) { text-shadow: 0 1px 6px rgba(0,0,0,.45); }
+/* The big logo is right below in the hero, so the small header brand only appears after scrolling past it. */
+.brand { transition: opacity .25s ease, visibility .25s; }
+.site-header.is-over-hero .brand { opacity: 0; visibility: hidden; }
 /* The hero extends up behind the header. */
 .hero, .page-hero { margin-top: -68px; }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
