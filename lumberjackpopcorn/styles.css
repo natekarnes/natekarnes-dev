@@ -272,14 +272,11 @@ img { max-width: 100%; }
 .family-loves { margin-bottom: 36px; }
 .family-loves li { background: #fff; }
 .family-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
-.papa { align-items: start; }
+.papa { align-items: center; }
 .papa p { color: var(--muted); }
 .papa-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .papa-photos img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); }
-.papa-wide { grid-column: span 2; margin: 0; }
-.papa-wide img { aspect-ratio: 16 / 10 !important; object-position: center 40%; }
-.papa-wide figcaption { margin-top: 10px; color: var(--muted); font-size: .95rem; text-align: center; }
-.papa-photos > img:nth-child(2) { object-position: center 30%; }
+.papa-photos img:first-child { object-position: center 30%; }
 .papa-photos img:last-child { object-position: left center; }
 .family-grid img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); }
 .family-grid img.pos-top { object-position: center top; }
