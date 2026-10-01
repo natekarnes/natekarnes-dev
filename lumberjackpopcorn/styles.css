@@ -3,7 +3,6 @@
   --green: #3f752c;
   --forest: #183a1e;
   --olive: #b9be4f;
-  --red: #f94141;
 
   --white: #ffffff;
   --sky: #e8f2f8;
@@ -157,7 +156,7 @@ img { max-width: 100%; }
   font-family: "Alfa Slab One", Georgia, serif; font-size: 1.3rem; color: var(--forest);
 }
 .trusted-list li + li::before {
-  content: "•"; color: var(--red); margin-right: 28px;
+  content: "•"; color: var(--olive); margin-right: 28px;
 }
 .trusted-list .trusted-more { font-family: inherit; font-size: 1.05rem; font-style: italic; color: var(--muted); }
 
@@ -188,7 +187,7 @@ img { max-width: 100%; }
   border-radius: var(--radius);
   padding: 28px;
   box-shadow: var(--shadow);
-  border-top: 6px solid var(--red);
+  border-top: 6px solid var(--green);
 }
 .card h3 { margin: 0 0 10px; font-size: 1.4rem; color: var(--forest); }
 .card p { margin: 0; color: var(--muted); }
@@ -224,7 +223,7 @@ img { max-width: 100%; }
 .chips small { font-weight: 600; color: var(--muted); margin-left: 4px; }
 .chips .chip-seasonal { border-color: var(--olive); background: var(--sky); }
 .why { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-.why li { border-left: 5px solid var(--red); padding: 4px 0 4px 16px; }
+.why li { border-left: 5px solid var(--olive); padding: 4px 0 4px 16px; }
 
 /* Popcorn + lemonade combo */
 .combo { background: var(--forest); color: var(--white); overflow: hidden; }
@@ -313,7 +312,7 @@ img { max-width: 100%; }
 .cart-btn:hover { background: var(--olive); color: var(--forest); }
 .cart-count {
   display: inline-grid; place-items: center; min-width: 24px; height: 24px; padding: 0 6px;
-  border-radius: 999px; background: var(--red); color: #fff; font-size: .85rem;
+  border-radius: 999px; background: var(--olive); color: var(--forest); font-size: .85rem;
 }
 .cart {
   margin: 0 0 0 auto; height: 100%; max-height: 100%; width: min(420px, 100%);
@@ -325,7 +324,6 @@ img { max-width: 100%; }
 .cart-head {
   display: flex; align-items: center; justify-content: space-between;
   padding: 20px 24px; background: var(--forest); color: var(--white);
-  border-bottom: 4px solid var(--red);
 }
 .cart-head h2 { margin: 0; font-size: 1.5rem; }
 .cart-close {
@@ -366,7 +364,7 @@ img { max-width: 100%; }
 .thanks-card .hero-actions { justify-content: center; margin-top: 24px; }
 
 /* Footer */
-.site-footer { background: var(--forest); color: #c9d3c3; padding: 40px 0; border-top: 4px solid var(--red); }
+.site-footer { background: var(--forest); color: #c9d3c3; padding: 40px 0; }
 .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
 .footer-inner p { margin: 0; }
 .brand-foot { color: var(--white); font-size: 1.25rem; }
@@ -375,7 +373,7 @@ img { max-width: 100%; }
 .footer-links a:hover { color: var(--olive); }
 .copyright { width: 100%; font-size: .95rem; }
 
-:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--olive); outline-offset: 3px; }
 
 /* Mobile */
 @media (max-width: 860px) {
