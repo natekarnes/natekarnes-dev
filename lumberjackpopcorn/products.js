@@ -99,8 +99,8 @@ const PRODUCTS = [
     category: 'Merch',
     description: 'A black enamel camp mug with the full-color Lumberjack. Made for coffee, cocoa, or a cup of kettle corn.',
     price: 12,
-    image: null,
-    icon: '☕',
+    image: 'images/mug.webp',
+    illustration: true,
     squareUrl: '',
   },
   {
@@ -108,7 +108,8 @@ const PRODUCTS = [
     category: 'Merch',
     description: 'Tiny popcorn-box earrings made from genuine LEGO® bricks, in red and white stripes. A fun gift for any popcorn lover.',
     price: 10,
-    image: 'images/earrings.jpg',
+    image: 'images/earrings.webp',
+    illustration: true,
     squareUrl: '',
   },
   {
