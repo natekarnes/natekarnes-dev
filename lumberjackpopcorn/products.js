@@ -32,15 +32,6 @@ const PRODUCTS = [
     squareUrl: '',
   },
   {
-    name: 'Caramel Corn',
-    category: 'Popcorn',
-    description: 'Rich, golden, old-fashioned caramel corn with serious crunch.',
-    price: 12,
-    image: 'images/bag-caramel.webp',
-    illustration: true,
-    squareUrl: '',
-  },
-  {
     name: 'Butter',
     category: 'Popcorn',
     description: 'Simple, savory, and hard to stop eating.',
