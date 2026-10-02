@@ -92,6 +92,7 @@ const PRODUCTS = [
     price: 30,
     image: null,
     icon: '🧢',
+    comingSoon: true,
     squareUrl: '',
   },
   {
