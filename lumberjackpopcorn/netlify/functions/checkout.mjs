@@ -7,7 +7,8 @@
 //   SQUARE_ACCESS_TOKEN   required. From the Square Developer Dashboard. Never commit this.
 //   SQUARE_LOCATION_ID    required. The Square location the orders belong to.
 //   SQUARE_ENVIRONMENT    "production" (default) or "sandbox" for test payments.
-//   SHIPPING_FEE_CENTS    flat shipping charge per order, in cents (e.g. 899). 0 or unset = free.
+//   SHIPPING_FEE_CENTS    required. Flat shipping charge per order, in cents (e.g. 1000). Use 0 for
+//                         free shipping. Checkout stays off while it's missing.
 //   SITE_URL              e.g. https://lumberjackpopcorn.com (falls back to Netlify's URL).
 
 // Items that can be bought online, by Square item variation ID. Keep in sync with products.js.
@@ -75,7 +76,8 @@ export default async (req) => {
   const env = (k) => (globalThis.Netlify?.env?.get(k) ?? process.env[k] ?? '').trim();
   const token = env('SQUARE_ACCESS_TOKEN');
   const locationId = env('SQUARE_LOCATION_ID');
-  if (!token || !locationId) {
+  const shippingRaw = env('SHIPPING_FEE_CENTS');
+  if (!token || !locationId || !/^\d+$/.test(shippingRaw)) {
     return json(503, { error: 'Online checkout is not set up yet. Please use the order form below.' });
   }
 
@@ -92,7 +94,7 @@ export default async (req) => {
     ? 'https://connect.squareupsandbox.com'
     : 'https://connect.squareup.com';
   const siteUrl = env('SITE_URL') || env('URL') || new URL(req.url).origin;
-  const shippingCents = Math.max(0, parseInt(env('SHIPPING_FEE_CENTS') || '0', 10) || 0);
+  const shippingCents = parseInt(shippingRaw, 10);
 
   const payload = buildPaymentLinkRequest(body.items, {
     locationId,
