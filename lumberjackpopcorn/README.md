@@ -32,30 +32,27 @@ Netlify dashboard (turn on email notifications there).
 Both forms (`corporate-quote` and `shop-order`) use Netlify Forms. Turn on
 email notifications under **Forms** in the Netlify dashboard.
 
-## Managing the shop (Shopify)
+## Managing the shop (Square)
 
-The shop page keeps its own design and cart; checkout, payment, shipping, and
-taxes happen on Shopify using cart links
-(`https://STORE.myshopify.com/cart/VARIANT:QTY,...`).
+Products are listed in `products.js`. Checkout, payment, shipping, and taxes
+happen in your Square Online store; the website links each product to its
+page there.
 
-1. Create the products in Shopify (any plan that includes online checkout),
-   set their prices and shipping rates there.
-2. In `products.js`, set `SHOPIFY_STORE` to your `something.myshopify.com`
-   address.
-3. For each product, set `shopifyVariantId`. To find it, open
-   `https://STORE.myshopify.com/products/PRODUCT-HANDLE.js` in a browser and
-   copy the `id` inside `variants` (for a product with several variants, such
-   as flavors or shirt sizes, each variant has its own ID). You can also open
-   the variant in the Shopify admin; the ID is the number at the end of the URL.
-4. Keep `price` in `products.js` matching Shopify. The site uses it for the
-   cart subtotal, but Shopify's price is what customers pay.
+1. In Square, turn on Square Online, set up payments, shipping rates, and
+   taxes, and add the products (or ask Claude to add them through the Square
+   connector).
+2. In `products.js`, set `SQUARE_STORE_URL` to your Square Online store
+   address. A **Cart** button then appears in the shop header.
+3. For each product, paste its Square Online product page link into
+   `squareUrl`. Its button changes from **Add to order** to **Buy**.
+4. Keep `price` in `products.js` matching Square; Square's price is what
+   customers pay.
 
-Once a store is set, those products get **Add to cart** and a cart button
-appears in the header. Products without a variant ID still use the order
-request form, and `comingSoon: true` shows a product without letting people
-buy it. Keep `lumberjackpopcorn.com` pointed at Netlify; Shopify checkout runs
-on the myshopify.com address (or a subdomain like `shop.lumberjackpopcorn.com`
-if you connect one in Shopify).
+Products without a `squareUrl` still use the order request form, and
+`comingSoon: true` shows a product without letting people buy it. Keep
+`lumberjackpopcorn.com` pointed at Netlify; the Square store lives at its own
+square.site address (or a subdomain like `shop.lumberjackpopcorn.com` if you
+connect one in Square).
 
 ## Things to customize
 

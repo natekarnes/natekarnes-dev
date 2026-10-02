@@ -1,87 +1,12 @@
 const grid = document.getElementById('products');
 const itemsField = document.getElementById('order-items');
 
-const STORE = SHOPIFY_STORE.trim().replace(/^https?:\/\//, '').replace(/\/+$/, '');
-const isOnline = (p) => Boolean(STORE && p.shopifyVariantId && !p.comingSoon);
+const STORE_URL = SQUARE_STORE_URL.trim();
+const isOnline = (p) => Boolean(p.squareUrl && !p.comingSoon);
 const anyOnline = PRODUCTS.some(isOnline);
 const money = (n) => `$${n.toFixed(2)}`;
 
-// ---------- Cart (only used once Shopify is connected) ----------
-// Stored as { variantId: quantity } in this browser only.
-const CART_KEY = 'ljp-cart';
-let cart = {};
-try { cart = JSON.parse(localStorage.getItem(CART_KEY)) || {}; } catch (e) { cart = {}; }
-
-const byVariant = new Map(PRODUCTS.filter(isOnline).map((p) => [String(p.shopifyVariantId), p]));
-// Drop anything left over from products that were removed or changed.
-Object.keys(cart).forEach((id) => { if (!byVariant.has(id) || !(cart[id] > 0)) delete cart[id]; });
-
-const cartDialog = document.getElementById('cart');
-const cartBtn = document.querySelector('.cart-btn');
-const cartList = cartDialog.querySelector('.cart-items');
-
-function saveCart() {
-  try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch (e) { /* storage unavailable */ }
-  renderCart();
-}
-
-function setQty(id, qty) {
-  if (qty > 0) cart[id] = Math.min(qty, 99);
-  else delete cart[id];
-  saveCart();
-}
-
-function renderCart() {
-  const entries = Object.entries(cart);
-  const count = entries.reduce((n, [, q]) => n + q, 0);
-  document.getElementById('cart-count').textContent = count;
-
-  cartList.innerHTML = '';
-  let subtotal = 0;
-  let allPriced = true;
-  entries.forEach(([id, qty]) => {
-    const p = byVariant.get(id);
-    if (p.price != null) subtotal += p.price * qty;
-    else allPriced = false;
-
-    const li = document.createElement('li');
-    li.className = 'cart-item';
-    li.innerHTML = `
-      <div>
-        <p class="cart-item-name"></p>
-        <p class="cart-item-price">${p.price != null ? money(p.price) : ''}</p>
-      </div>
-      <div class="qty">
-        <button type="button" data-d="-1" aria-label="Remove one">&minus;</button>
-        <span aria-live="polite">${qty}</span>
-        <button type="button" data-d="1" aria-label="Add one">+</button>
-      </div>`;
-    li.querySelector('.cart-item-name').textContent = p.name;
-    li.querySelectorAll('.qty button').forEach((b) => {
-      b.addEventListener('click', () => setQty(id, qty + Number(b.dataset.d)));
-    });
-    cartList.appendChild(li);
-  });
-
-  document.getElementById('cart-subtotal').textContent = allPriced ? money(subtotal) : 'See checkout';
-  cartDialog.classList.toggle('is-empty', entries.length === 0);
-}
-
-// Shopify cart permalink: https://STORE/cart/VARIANT:QTY,VARIANT:QTY
-function checkoutUrl() {
-  const lines = Object.entries(cart).map(([id, qty]) => `${id}:${qty}`).join(',');
-  return `https://${STORE}/cart/${lines}`;
-}
-
-document.getElementById('checkout').addEventListener('click', () => {
-  if (Object.keys(cart).length) window.location.href = checkoutUrl();
-});
-cartBtn.addEventListener('click', () => cartDialog.showModal());
-cartDialog.querySelector('.cart-close').addEventListener('click', () => cartDialog.close());
-// Close when clicking the backdrop.
-cartDialog.addEventListener('click', (e) => { if (e.target === cartDialog) cartDialog.close(); });
-
-// ---------- Order request form (fallback when not on Shopify) ----------
+// ---------- Order request form (fallback when a product isn't on Square yet) ----------
 // Keeps a running "2 × Name" list in the order form's Items field.
 function addToOrder(name) {
   const lines = itemsField.value.split('\n').filter(Boolean);
@@ -114,7 +39,7 @@ function productCard(p) {
 
   let label = 'Add to order';
   if (p.comingSoon) label = 'Coming soon';
-  else if (isOnline(p)) label = 'Add to cart';
+  else if (isOnline(p)) label = 'Buy';
 
   card.innerHTML = `
     <div class="product-media">${media}</div>
@@ -122,21 +47,19 @@ function productCard(p) {
       <p class="product-cat"></p>
       <h3></h3>
       <p class="product-desc"></p>
-      <div class="product-foot">${price}<button class="btn btn-block" type="button">${label}</button></div>
+      <div class="product-foot">${price}${isOnline(p)
+        ? `<a class="btn btn-block" href="${p.squareUrl}">${label}</a>`
+        : `<button class="btn btn-block" type="button">${label}</button>`}</div>
     </div>`;
   card.querySelector('.product-cat').textContent = p.category;
   card.querySelector('h3').textContent = p.name;
   card.querySelector('.product-desc').textContent = p.description;
 
-  const btn = card.querySelector('button');
+  const btn = card.querySelector('.product-foot .btn');
   if (p.comingSoon) {
     btn.disabled = true;
   } else if (isOnline(p)) {
-    btn.addEventListener('click', () => {
-      const id = String(p.shopifyVariantId);
-      setQty(id, (cart[id] || 0) + 1);
-      flash(btn, 'Added ✓');
-    });
+    // Plain link to the Square product page; nothing to wire up.
   } else {
     btn.addEventListener('click', () => {
       addToOrder(p.name);
@@ -164,6 +87,6 @@ document.querySelectorAll('.filter').forEach((btn) => {
 // ---------- Online vs. offline page copy ----------
 const mode = anyOnline ? 'online' : 'offline';
 document.querySelectorAll('[data-when]').forEach((el) => { el.hidden = el.dataset.when !== mode; });
-cartBtn.hidden = !anyOnline;
+const cartLink = document.querySelector('.cart-btn');
+if (cartLink && STORE_URL) { cartLink.href = STORE_URL; cartLink.hidden = false; }
 itemsField.required = !anyOnline;
-if (anyOnline) renderCart();

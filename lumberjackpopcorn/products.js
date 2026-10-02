@@ -1,17 +1,17 @@
 // Shop catalog. Edit this list to add, remove, or change products.
 //
-// SHOPIFY_STORE: your store's myshopify.com address, e.g. 'lumberjack-popcorn.myshopify.com'.
-// Leave it empty and every product falls back to the order request form.
-const SHOPIFY_STORE = '';
+// SQUARE_STORE_URL: your Square Online store address, e.g. 'https://lumberjack-popcorn.square.site'.
+// When set, a "Cart" button in the shop header links to it. Leave it empty until the store is live.
+const SQUARE_STORE_URL = '';
 
-//   price:            number in dollars, or null to hide the price (Shopify's price is what's charged)
-//   image:            path to a photo, or null to show an icon placeholder
-//   illustration:     true for drawings on a transparent background (shown whole, not cropped)
-//   icon:             emoji shown when there is no image
-//   shopifyVariantId: the product's variant ID from Shopify. With this and SHOPIFY_STORE set,
-//                     the button becomes "Add to cart" and checkout happens on Shopify.
-//                     Without it, the button adds the item to the order request form.
-//   comingSoon:       true shows the product but disables the button
+//   price:       number in dollars, or null to hide the price (Square's price is what's charged)
+//   image:       path to a photo, or null to show an icon placeholder
+//   illustration: true for drawings on a transparent background (shown whole, not cropped)
+//   icon:        emoji shown when there is no image
+//   squareUrl:   the product's page in your Square Online store. With this set, the button
+//                becomes "Buy" and opens that page, where customers add to cart and check out.
+//                Without it, the button adds the item to the order request form.
+//   comingSoon:  true shows the product but disables the button
 const PRODUCTS = [
   {
     name: 'Original Kettle',
@@ -20,7 +20,7 @@ const PRODUCTS = [
     price: 12,
     image: 'images/bag-kettle.webp',
     illustration: true,
-    shopifyVariantId: '',
+    squareUrl: '',
   },
   {
     name: 'Salted Caramel',
@@ -29,7 +29,7 @@ const PRODUCTS = [
     price: 12,
     image: 'images/bag-caramel.webp',
     illustration: true,
-    shopifyVariantId: '',
+    squareUrl: '',
   },
   {
     name: 'Caramel Corn',
@@ -38,7 +38,7 @@ const PRODUCTS = [
     price: 12,
     image: 'images/bag-caramel.webp',
     illustration: true,
-    shopifyVariantId: '',
+    squareUrl: '',
   },
   {
     name: 'Butter',
@@ -47,7 +47,7 @@ const PRODUCTS = [
     price: 12,
     image: 'images/bag-kettle.webp',
     illustration: true,
-    shopifyVariantId: '',
+    squareUrl: '',
   },
   {
     name: 'Jalapeño Cheddar',
@@ -56,7 +56,7 @@ const PRODUCTS = [
     price: 12,
     image: 'images/bag-kettle.webp',
     illustration: true,
-    shopifyVariantId: '',
+    squareUrl: '',
   },
   {
     name: 'Signature Seasoning',
@@ -65,7 +65,7 @@ const PRODUCTS = [
     price: 8,
     image: 'images/seasoning.webp',
     illustration: true,
-    shopifyVariantId: '',
+    squareUrl: '',
   },
   {
     name: 'Lumberjack Logo Sticker',
@@ -73,7 +73,7 @@ const PRODUCTS = [
     description: 'The full-color Lumberjack Popcorn Company logo. Also comes in green and holographic versions at the trailer.',
     price: 4,
     image: 'images/sticker-logo.jpg',
-    shopifyVariantId: '',
+    squareUrl: '',
   },
   {
     name: 'Bigfoot Bag Hug Sticker',
@@ -82,7 +82,7 @@ const PRODUCTS = [
     price: 4,
     image: 'images/sticker-bigfoot-hug.webp',
     illustration: true,
-    shopifyVariantId: '',
+    squareUrl: '',
   },
   {
     name: 'Bigfoot Cheers Sticker',
@@ -91,7 +91,7 @@ const PRODUCTS = [
     price: 4,
     image: 'images/sticker-bigfoot-cheers.webp',
     illustration: true,
-    shopifyVariantId: '',
+    squareUrl: '',
   },
   {
     name: 'Lumberjack Hat',
@@ -100,7 +100,7 @@ const PRODUCTS = [
     price: 30,
     image: null,
     icon: '🧢',
-    shopifyVariantId: '',
+    squareUrl: '',
   },
   {
     name: 'Enamel Camp Mug',
@@ -109,7 +109,7 @@ const PRODUCTS = [
     price: 12,
     image: null,
     icon: '☕',
-    shopifyVariantId: '',
+    squareUrl: '',
   },
   {
     name: 'Popcorn Earrings',
@@ -117,7 +117,7 @@ const PRODUCTS = [
     description: 'Tiny popcorn-box earrings made from genuine LEGO® bricks, in red and white stripes. A fun gift for any popcorn lover.',
     price: 10,
     image: 'images/earrings.jpg',
-    shopifyVariantId: '',
+    squareUrl: '',
   },
   {
     name: 'T-Shirts & Hoodies',
@@ -127,6 +127,6 @@ const PRODUCTS = [
     image: null,
     icon: '👕',
     comingSoon: true,
-    shopifyVariantId: '',
+    squareUrl: '',
   },
 ];
