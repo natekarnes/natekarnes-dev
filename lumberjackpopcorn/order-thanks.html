@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Order Received | Lumberjack Popcorn Company</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="favicon-32.png" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="thanks-page forest-bg">
+  <main class="thanks-card">
+    <img class="thanks-logo" src="images/logo-black-text.png" alt="Lumberjack Popcorn Company" width="700" height="827">
+    <h1>Thanks for your order!</h1>
+    <p>Your receipt is on its way to your email. We pop online orders fresh once a week and ship them the same day, so your order will head out on our next popping day.</p>
+    <div class="hero-actions">
+      <a class="btn" href="shop.html">Back to the shop</a>
+      <a class="btn btn-outline" href="index.html">Home</a>
+    </div>
+  </main>
+  <script>
+    // The order is paid; empty the cart saved in this browser.
+    try { localStorage.removeItem('ljp-cart'); } catch (e) { /* storage unavailable */ }
+  </script>
+</body>
+</html>
