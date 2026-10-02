@@ -1,12 +1,102 @@
 const grid = document.getElementById('products');
 const itemsField = document.getElementById('order-items');
 
-const STORE_URL = SQUARE_STORE_URL.trim();
-const isOnline = (p) => Boolean(p.squareUrl && !p.comingSoon);
+const isOnline = (p) => Boolean(ONLINE_CHECKOUT && p.squareVariationId && !p.comingSoon);
 const anyOnline = PRODUCTS.some(isOnline);
 const money = (n) => `$${n.toFixed(2)}`;
 
-// ---------- Order request form (fallback when a product isn't on Square yet) ----------
+// ---------- Cart (used once ONLINE_CHECKOUT is on) ----------
+// Stored as { squareVariationId: quantity } in this browser only.
+const CART_KEY = 'ljp-cart';
+const MAX_QTY = 20;
+let cart = {};
+try { cart = JSON.parse(localStorage.getItem(CART_KEY)) || {}; } catch (e) { cart = {}; }
+
+const byId = new Map(PRODUCTS.filter(isOnline).map((p) => [p.squareVariationId, p]));
+// Drop anything left over from products that were removed or changed.
+Object.keys(cart).forEach((id) => { if (!byId.has(id) || !(cart[id] > 0)) delete cart[id]; });
+
+const cartDialog = document.getElementById('cart');
+const cartBtn = document.querySelector('.cart-btn');
+const cartList = cartDialog.querySelector('.cart-items');
+const checkoutBtn = document.getElementById('checkout');
+const checkoutError = document.getElementById('checkout-error');
+
+function saveCart() {
+  try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch (e) { /* storage unavailable */ }
+  renderCart();
+}
+
+function setQty(id, qty) {
+  if (qty > 0) cart[id] = Math.min(qty, MAX_QTY);
+  else delete cart[id];
+  saveCart();
+}
+
+function renderCart() {
+  const entries = Object.entries(cart);
+  document.getElementById('cart-count').textContent = entries.reduce((n, [, q]) => n + q, 0);
+
+  cartList.innerHTML = '';
+  let subtotal = 0;
+  entries.forEach(([id, qty]) => {
+    const p = byId.get(id);
+    subtotal += (p.price || 0) * qty;
+
+    const li = document.createElement('li');
+    li.className = 'cart-item';
+    li.innerHTML = `
+      <div>
+        <p class="cart-item-name"></p>
+        <p class="cart-item-price">${p.price != null ? money(p.price) : ''}</p>
+      </div>
+      <div class="qty">
+        <button type="button" data-d="-1" aria-label="Remove one">&minus;</button>
+        <span aria-live="polite">${qty}</span>
+        <button type="button" data-d="1" aria-label="Add one">+</button>
+      </div>`;
+    li.querySelector('.cart-item-name').textContent = p.name;
+    li.querySelectorAll('.qty button').forEach((b) => {
+      b.addEventListener('click', () => setQty(id, qty + Number(b.dataset.d)));
+    });
+    cartList.appendChild(li);
+  });
+
+  document.getElementById('cart-subtotal').textContent = money(subtotal);
+  cartDialog.classList.toggle('is-empty', entries.length === 0);
+}
+
+// Sends the cart to our Netlify function, which asks Square for a secure checkout page.
+async function startCheckout() {
+  const items = Object.entries(cart).map(([id, qty]) => ({ id, qty }));
+  if (!items.length) return;
+  checkoutError.hidden = true;
+  checkoutBtn.disabled = true;
+  checkoutBtn.textContent = 'Opening secure checkout…';
+  try {
+    const res = await fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || !data.url) throw new Error(data.error || 'Checkout is unavailable right now.');
+    window.location.href = data.url;
+  } catch (err) {
+    checkoutError.textContent = err.message;
+    checkoutError.hidden = false;
+    checkoutBtn.disabled = false;
+    checkoutBtn.textContent = 'Checkout';
+  }
+}
+
+checkoutBtn.addEventListener('click', startCheckout);
+cartBtn.addEventListener('click', () => cartDialog.showModal());
+cartDialog.querySelector('.cart-close').addEventListener('click', () => cartDialog.close());
+// Close when clicking the backdrop.
+cartDialog.addEventListener('click', (e) => { if (e.target === cartDialog) cartDialog.close(); });
+
+// ---------- Order request form (used while online checkout is off) ----------
 // Keeps a running "2 × Name" list in the order form's Items field.
 function addToOrder(name) {
   const lines = itemsField.value.split('\n').filter(Boolean);
@@ -39,7 +129,7 @@ function productCard(p) {
 
   let label = 'Add to order';
   if (p.comingSoon) label = 'Coming soon';
-  else if (isOnline(p)) label = 'Buy';
+  else if (isOnline(p)) label = 'Add to cart';
 
   card.innerHTML = `
     <div class="product-media">${media}</div>
@@ -47,9 +137,7 @@ function productCard(p) {
       <p class="product-cat"></p>
       <h3></h3>
       <p class="product-desc"></p>
-      <div class="product-foot">${price}${isOnline(p)
-        ? `<a class="btn btn-block" href="${p.squareUrl}">${label}</a>`
-        : `<button class="btn btn-block" type="button">${label}</button>`}</div>
+      <div class="product-foot">${price}<button class="btn btn-block" type="button">${label}</button></div>
     </div>`;
   card.querySelector('.product-cat').textContent = p.category;
   card.querySelector('h3').textContent = p.name;
@@ -59,7 +147,10 @@ function productCard(p) {
   if (p.comingSoon) {
     btn.disabled = true;
   } else if (isOnline(p)) {
-    // Plain link to the Square product page; nothing to wire up.
+    btn.addEventListener('click', () => {
+      setQty(p.squareVariationId, (cart[p.squareVariationId] || 0) + 1);
+      flash(btn, 'Added ✓');
+    });
   } else {
     btn.addEventListener('click', () => {
       addToOrder(p.name);
@@ -87,6 +178,6 @@ document.querySelectorAll('.filter').forEach((btn) => {
 // ---------- Online vs. offline page copy ----------
 const mode = anyOnline ? 'online' : 'offline';
 document.querySelectorAll('[data-when]').forEach((el) => { el.hidden = el.dataset.when !== mode; });
-const cartLink = document.querySelector('.cart-btn');
-if (cartLink && STORE_URL) { cartLink.href = STORE_URL; cartLink.hidden = false; }
+cartBtn.hidden = !anyOnline;
 itemsField.required = !anyOnline;
+if (anyOnline) renderCart();

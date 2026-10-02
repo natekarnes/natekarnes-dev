@@ -1,17 +1,17 @@
 // Shop catalog. Edit this list to add, remove, or change products.
 //
-// SQUARE_STORE_URL: your Square Online store address, e.g. 'https://lumberjack-popcorn.square.site'.
-// When set, a "Cart" button in the shop header links to it. Leave it empty until the store is live.
-const SQUARE_STORE_URL = '';
+// ONLINE_CHECKOUT: set to true once SQUARE_ACCESS_TOKEN and SQUARE_LOCATION_ID are added in
+// Netlify. Then products with a squareVariationId get "Add to cart" and check out on Square's
+// secure payment page. While false, every product uses the order request form instead.
+const ONLINE_CHECKOUT = false;
 
-//   price:       number in dollars, or null to hide the price (Square's price is what's charged)
-//   image:       path to a photo, or null to show an icon placeholder
-//   illustration: true for drawings on a transparent background (shown whole, not cropped)
-//   icon:        emoji shown when there is no image
-//   squareUrl:   the product's page in your Square Online store. With this set, the button
-//                becomes "Buy" and opens that page, where customers add to cart and check out.
-//                Without it, the button adds the item to the order request form.
-//   comingSoon:  true shows the product but disables the button
+//   price:             number in dollars, shown on the site (Square's price is what's charged)
+//   image:             path to a photo, or null to show an icon placeholder
+//   illustration:      true for drawings on a transparent background (shown whole, not cropped)
+//   icon:              emoji shown when there is no image
+//   squareVariationId: the item variation ID in Square. Also add it to the SELLABLE list in
+//                      netlify/functions/checkout.mjs, or checkout will reject it.
+//   comingSoon:        true shows the product but disables the button
 const PRODUCTS = [
   {
     name: 'Original Kettle',
@@ -20,7 +20,7 @@ const PRODUCTS = [
     price: 12,
     image: 'images/bag-kettle.webp',
     illustration: true,
-    squareUrl: '',
+    squareVariationId: 'HFUBU2BIG6XBI67C2CSY4NER',
   },
   {
     name: 'Salted Caramel',
@@ -29,7 +29,7 @@ const PRODUCTS = [
     price: 12,
     image: 'images/bag-caramel.webp',
     illustration: true,
-    squareUrl: '',
+    squareVariationId: 'JNMLFY7D7YG5DYABV5NJS4P4',
   },
   {
     name: 'Butter',
@@ -38,7 +38,7 @@ const PRODUCTS = [
     price: 12,
     image: 'images/bag-kettle.webp',
     illustration: true,
-    squareUrl: '',
+    squareVariationId: 'KZ3BU6NBZB2AKGRX7KAL7QKP',
   },
   {
     name: 'Jalapeño Cheddar',
@@ -47,7 +47,7 @@ const PRODUCTS = [
     price: 12,
     image: 'images/bag-kettle.webp',
     illustration: true,
-    squareUrl: '',
+    squareVariationId: 'KH54HPWGNDE6DG7MYYWDKSH3',
   },
   {
     name: 'Signature Seasoning',
@@ -56,7 +56,7 @@ const PRODUCTS = [
     price: 8,
     image: 'images/seasoning.webp',
     illustration: true,
-    squareUrl: '',
+    squareVariationId: 'ZYNSXG2CCQIGI3VIQ2F7LATQ',
   },
   {
     name: 'Lumberjack Logo Sticker',
@@ -65,7 +65,7 @@ const PRODUCTS = [
     price: 4,
     image: 'images/sticker-logo.webp',
     illustration: true,
-    squareUrl: '',
+    squareVariationId: 'UIIV2ED67RW5PSMXJGLHSOQD',
   },
   {
     name: 'Bigfoot Bag Hug Sticker',
@@ -74,7 +74,7 @@ const PRODUCTS = [
     price: 4,
     image: 'images/sticker-bigfoot-hug.webp',
     illustration: true,
-    squareUrl: '',
+    squareVariationId: 'TLJ3NH23AHCYBIUDWT24JCIS',
   },
   {
     name: 'Bigfoot Cheers Sticker',
@@ -83,7 +83,7 @@ const PRODUCTS = [
     price: 4,
     image: 'images/sticker-bigfoot-cheers.webp',
     illustration: true,
-    squareUrl: '',
+    squareVariationId: '3HUYZFF7EPQNJTJLRF3THC2O',
   },
   {
     name: 'Lumberjack Hat',
@@ -93,7 +93,7 @@ const PRODUCTS = [
     image: null,
     icon: '🧢',
     comingSoon: true,
-    squareUrl: '',
+    squareVariationId: 'OCIQUHILXEGFZIWGTK3SRXRI',
   },
   {
     name: 'Enamel Camp Mug',
@@ -102,7 +102,7 @@ const PRODUCTS = [
     price: 12,
     image: 'images/mug.webp',
     illustration: true,
-    squareUrl: '',
+    squareVariationId: 'ECROV4HQOVVIROF4LLR4LWS7',
   },
   {
     name: 'Popcorn Earrings',
@@ -111,7 +111,7 @@ const PRODUCTS = [
     price: 10,
     image: 'images/earrings.webp',
     illustration: true,
-    squareUrl: '',
+    squareVariationId: 'JME7UDDYPCYYUCALP2GXLDAO',
   },
   {
     name: 'T-Shirts & Hoodies',
@@ -121,6 +121,5 @@ const PRODUCTS = [
     image: null,
     icon: '👕',
     comingSoon: true,
-    squareUrl: '',
   },
 ];

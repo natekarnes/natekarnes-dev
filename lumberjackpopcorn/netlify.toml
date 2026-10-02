@@ -1,0 +1,9 @@
+# Netlify settings for lumberjackpopcorn.com.
+# In the Netlify UI, set the site's Base directory to `lumberjackpopcorn`;
+# the paths below are relative to it.
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"

@@ -28,37 +28,47 @@ Netlify dashboard (turn on email notifications there).
 - `about.html`: about us and the founding story (Nate and Greg, 2019)
 - `shop.html`: popcorn, seasonings, stickers, and merch
 - `thanks.html`: shown after either form is submitted
+- `order-thanks.html`: shown after a successful online checkout
 
 Both forms (`corporate-quote` and `shop-order`) use Netlify Forms. Turn on
 email notifications under **Forms** in the Netlify dashboard.
 
-## Managing the shop (Square)
+## Online checkout (Square)
 
-Products are listed in `products.js`. Checkout, payment, shipping, and taxes
-happen in your Square Online store; the website links each product to its
-page there.
+Shoppers fill a cart on `shop.html`. **Checkout** calls a Netlify Function
+(`netlify/functions/checkout.mjs`, served at `/api/checkout`) that asks Square
+for a secure checkout page for that cart. The shopper pays and enters a
+shipping address on Square's page, then lands back on `order-thanks.html`.
+Orders show up in the Square dashboard. Prices always come from the Square
+catalog, not the browser.
 
-1. In Square, turn on Square Online, set up payments, shipping rates, and
-   taxes, and add the products (or ask Claude to add them through the Square
-   connector).
-2. In `products.js`, set `SQUARE_STORE_URL` to your Square Online store
-   address. A **Cart** button then appears in the shop header.
-3. For each product, paste its Square Online product page link into
-   `squareUrl`. Its button changes from **Add to order** to **Buy**.
-4. Keep `price` in `products.js` matching Square; Square's price is what
-   customers pay.
+To switch it on:
 
-Products without a `squareUrl` still use the order request form, and
-`comingSoon: true` shows a product without letting people buy it. Keep
-`lumberjackpopcorn.com` pointed at Netlify; the Square store lives at its own
-square.site address (or a subdomain like `shop.lumberjackpopcorn.com` if you
-connect one in Square).
+1. In the Square Developer Dashboard (developer.squareup.com), create an
+   application and copy its **Production access token**. (For a dry run, use
+   the Sandbox token and `SQUARE_ENVIRONMENT=sandbox`; note the sandbox has
+   its own separate catalog.)
+2. In Netlify, under **Site configuration > Environment variables**, add:
+   - `SQUARE_ACCESS_TOKEN`: the token (keep it secret; never commit it)
+   - `SQUARE_LOCATION_ID`: `4JX3BDE45QNEB`
+   - `SHIPPING_FEE_CENTS`: flat shipping per order in cents, e.g. `899`
+   - `SITE_URL`: `https://lumberjackpopcorn.com`
+3. In `products.js`, set `ONLINE_CHECKOUT = true` and redeploy.
+
+While `ONLINE_CHECKOUT` is `false`, every product uses the order request form.
+To sell a new product online, add it in Square, put its item variation ID in
+`products.js` (`squareVariationId`), and add the same ID to `SELLABLE` in
+`netlify/functions/checkout.mjs`. `comingSoon: true` shows a product without
+letting people buy it. Keep `price` in `products.js` matching Square.
+
+Taxes: Square applies the item's tax settings (popcorn and seasoning are set
+non-taxable; stickers and merch taxable) once a tax rate is added in Square.
 
 ## Things to customize
 
 - Prices in `products.js` (popcorn $12, seasonings $8, stickers $4, hat $30,
   mug $12, earrings $10).
-- Product photos: seasonings and merch use icon placeholders.
+- Product photos: the hat still uses an icon placeholder.
 - Photos in `images/` were cropped from Instagram screenshots; the original
   full-resolution photos will look sharper.
 - `images/logo-white-text.png` (dark backgrounds) and `logo-black-text.png`
