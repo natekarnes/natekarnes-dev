@@ -276,8 +276,10 @@ img { max-width: 100%; }
 .papa p { color: var(--muted); }
 .papa-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .papa-photos img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); }
-.papa-photos img:first-child { object-position: center 30%; }
-.papa-photos img:last-child { object-position: left center; }
+.papa-photos figure { margin: 0; }
+.papa-photos figure:first-child img { object-position: center 30%; }
+.papa-photos figure:last-child img { object-position: left center; }
+.papa-photos figcaption { margin-top: 10px; font-size: .9rem; color: var(--muted); text-align: center; }
 .family-grid img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); }
 .family-grid img.pos-top { object-position: center top; }
 @media (max-width: 860px) {
