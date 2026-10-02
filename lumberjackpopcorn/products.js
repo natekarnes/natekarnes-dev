@@ -63,7 +63,8 @@ const PRODUCTS = [
     category: 'Stickers',
     description: 'The full-color Lumberjack Popcorn Company logo. Also comes in green and holographic versions at the trailer.',
     price: 4,
-    image: 'images/sticker-logo.jpg',
+    image: 'images/sticker-logo.webp',
+    illustration: true,
     squareUrl: '',
   },
   {
