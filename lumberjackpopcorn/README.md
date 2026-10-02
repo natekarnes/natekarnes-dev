@@ -54,7 +54,7 @@ To switch it on:
    - `SHIPPING_FEE_CENTS`: flat shipping per order in cents (`1000` = $10; `0` = free).
      Required: checkout shows an error while it's missing.
    - `SITE_URL`: `https://lumberjackpopcorn.com`
-3. In `products.js`, set `ONLINE_CHECKOUT = true` and redeploy. (It's on now.)
+3. In `products.js`, set `ONLINE_CHECKOUT = true` and redeploy.
 
 If you change the shipping fee, update the cart note in `shop.html` too.
 

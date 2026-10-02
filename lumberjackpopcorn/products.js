@@ -3,7 +3,7 @@
 // ONLINE_CHECKOUT: true once SQUARE_ACCESS_TOKEN, SQUARE_LOCATION_ID, and SHIPPING_FEE_CENTS are
 // added in Netlify. Then products with a squareVariationId get "Add to cart" and check out on Square's
 // secure payment page. While false, every product uses the order request form instead.
-const ONLINE_CHECKOUT = true;
+const ONLINE_CHECKOUT = false;
 
 //   price:             number in dollars, shown on the site (Square's price is what's charged)
 //   image:             path to a photo, or null to show an icon placeholder
