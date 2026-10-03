@@ -265,6 +265,7 @@ img { max-width: 100%; }
 .places { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
 .place { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
 .place img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.place img.crop-top { object-position: center 14%; }
 .place div { padding: 18px 22px 22px; }
 .place h3 { margin: 0 0 6px; font-size: 1.25rem; color: var(--forest); }
 .place p { margin: 0; color: var(--muted); font-size: 1rem; }
