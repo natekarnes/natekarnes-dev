@@ -167,6 +167,7 @@ img { max-width: 100%; }
 .trusted-list li + li::before {
   content: "•"; color: var(--olive); margin-right: 28px;
 }
+.trusted-list li.line-start::before { display: none; }
 .trusted-list .trusted-more { font-family: inherit; font-size: 1.05rem; font-style: italic; color: var(--muted); }
 
 /* Sections */

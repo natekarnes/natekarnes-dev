@@ -37,5 +37,20 @@ document.querySelectorAll('[data-order-type]').forEach((link) => {
   });
 });
 
+// The "trusted by" list wraps on narrower screens; hide the dot before whichever name starts a line.
+const trusted = document.querySelector('.trusted-list');
+if (trusted) {
+  const markLineStarts = () => {
+    let top = null;
+    trusted.querySelectorAll('li').forEach((li) => {
+      li.classList.toggle('line-start', top !== null && li.offsetTop > top + 4);
+      top = li.offsetTop;
+    });
+  };
+  markLineStarts();
+  window.addEventListener('resize', markLineStarts);
+  if (document.fonts) document.fonts.ready.then(markLineStarts);
+}
+
 const year = document.getElementById('year');
 if (year) year.textContent = new Date().getFullYear();
