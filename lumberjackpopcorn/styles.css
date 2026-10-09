@@ -444,6 +444,10 @@ img { max-width: 100%; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
 .footer-links a { color: var(--white); text-decoration: none; }
 .footer-links a:hover { color: var(--olive); }
+.footer-email { margin-top: 6px !important; }
+.footer-email a { color: var(--white); text-decoration: none; font-weight: 500; }
+.footer-email a:hover { color: var(--olive); }
+.order-email { margin-top: 20px; }
 .copyright { width: 100%; font-size: .95rem; }
 
 :focus-visible { outline: 3px solid var(--olive); outline-offset: 3px; }
