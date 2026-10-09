@@ -50,6 +50,15 @@ const PRODUCTS = [
     squareVariationId: 'KH54HPWGNDE6DG7MYYWDKSH3',
   },
   {
+    name: 'White Cheddar',
+    category: 'Popcorn',
+    description: 'Rich, tangy white cheddar on every kernel. Cheesy, salty, and seriously snackable.',
+    price: 12,
+    image: 'images/bag-kettle.webp',
+    illustration: true,
+    // Add the Square item variation ID here (and to SELLABLE in checkout.mjs) before turning checkout on.
+  },
+  {
     name: 'Signature Seasoning',
     category: 'Seasonings',
     description: 'Our house popcorn seasoning in an 8 oz shaker. Make Lumberjack-style popcorn at home.',
