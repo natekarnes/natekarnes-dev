@@ -76,11 +76,11 @@ const PRODUCTS = [
     squareVariationId: 'UIIV2ED67RW5PSMXJGLHSOQD',
   },
   {
-    name: 'Kettle Corn Bag Sticker',
+    name: 'Original Kettle Bag Sticker',
     category: 'Stickers',
-    description: 'A classic bag of Lumberjack kettle corn, tied up and ready to go.',
+    description: 'A bag of our Original Kettle popcorn, tied up and ready to go.',
     price: 4,
-    image: 'images/stickers/kettle-bag.webp',
+    image: 'images/stickers/original-kettle-bag.webp',
   },
   {
     name: 'Salted Caramel Bag Sticker',
