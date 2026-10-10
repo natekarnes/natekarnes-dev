@@ -95,6 +95,14 @@ const PRODUCTS = [
     squareVariationId: '3HUYZFF7EPQNJTJLRF3THC2O',
   },
   {
+    name: 'Bigfoot Popcorn Gulp Sticker',
+    category: 'Stickers',
+    description: 'Bigfoot pouring a whole bag of Lumberjack Popcorn straight into his mouth. No shame, all snack.',
+    price: 4,
+    image: 'images/sticker-bigfoot-gulp.webp',
+    illustration: true,
+  },
+  {
     name: 'Lumberjack Hat',
     category: 'Merch',
     description: 'A Lumberjack Popcorn Company hat for fair days, camp days, and every day in between.',
