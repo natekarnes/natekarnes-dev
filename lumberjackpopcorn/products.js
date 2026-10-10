@@ -47,7 +47,7 @@ const PRODUCTS = [
   {
     name: 'Jalapeño Cheddar',
     category: 'Popcorn',
-    description: 'Cheddar cheese with a jalapeño kick.',
+    description: 'Cheddar cheese with real ground jalapeños for a kick you can actually taste.',
     price: 12,
     image: 'images/bag-kettle.webp',
     illustration: true,
