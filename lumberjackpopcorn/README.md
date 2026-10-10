@@ -24,7 +24,8 @@ Netlify dashboard (turn on email notifications there).
 
 ## Pages
 
-- `index.html`: corporate landing page (services, "trusted by", quote form)
+- `index.html`: home page for everyone (pick a path: events, shop, or find us)
+- `business.html`: corporate page (services, "trusted by", quote form)
 - `about.html`: about us and the founding story (Nate and Greg, 2019)
 - `shop.html`: popcorn, seasonings, stickers, and merch
 - `thanks.html`: shown after either form is submitted
