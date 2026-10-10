@@ -65,7 +65,7 @@ const PRODUCTS = [
   {
     name: 'Signature Seasoning',
     category: 'Seasonings',
-    description: 'Our house popcorn seasoning in an 8 oz shaker. Make Lumberjack-style popcorn at home.',
+    description: 'Our house seasoning in an 8 oz shaker: buttery, savory, tangy, and garlicky. We shake it on popcorn and use it as our everyday seasoning salt on just about everything we cook.',
     price: 8,
     image: 'images/seasoning.webp',
     illustration: true,
