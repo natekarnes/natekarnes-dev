@@ -56,7 +56,7 @@ const PRODUCTS = [
     price: 12,
     image: 'images/bag-kettle.webp',
     illustration: true,
-    // Add the Square item variation ID here (and to SELLABLE in checkout.mjs) before turning checkout on.
+    squareVariationId: 'AP2JNVKZXUZXBBXRKUGKWVHZ',
   },
   {
     name: 'Signature Seasoning',

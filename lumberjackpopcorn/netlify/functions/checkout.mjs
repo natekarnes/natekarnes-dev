@@ -17,6 +17,7 @@ const SELLABLE = new Set([
   'JNMLFY7D7YG5DYABV5NJS4P4', // Salted Caramel Popcorn
   'KZ3BU6NBZB2AKGRX7KAL7QKP', // Butter Popcorn
   'KH54HPWGNDE6DG7MYYWDKSH3', // Jalapeño Cheddar Popcorn
+  'AP2JNVKZXUZXBBXRKUGKWVHZ', // White Cheddar Popcorn
   'ZYNSXG2CCQIGI3VIQ2F7LATQ', // Signature Seasoning (8 oz)
   'UIIV2ED67RW5PSMXJGLHSOQD', // Lumberjack Logo Sticker
   'TLJ3NH23AHCYBIUDWT24JCIS', // Bigfoot Bag Hug Sticker
