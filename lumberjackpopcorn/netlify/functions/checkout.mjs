@@ -22,6 +22,7 @@ const SELLABLE = new Set([
   'UIIV2ED67RW5PSMXJGLHSOQD', // Lumberjack Logo Sticker
   'TLJ3NH23AHCYBIUDWT24JCIS', // Bigfoot Bag Hug Sticker
   '3HUYZFF7EPQNJTJLRF3THC2O', // Bigfoot Cheers Sticker
+  'AXLXG7ZAI3HRPWEH275G5GXX', // Bigfoot Popcorn Gulp Sticker
   'ECROV4HQOVVIROF4LLR4LWS7', // Enamel Camp Mug
   'JME7UDDYPCYYUCALP2GXLDAO', // Popcorn Earrings
 ]);

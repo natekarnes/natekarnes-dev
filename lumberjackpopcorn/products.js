@@ -101,6 +101,7 @@ const PRODUCTS = [
     price: 4,
     image: 'images/sticker-bigfoot-gulp.webp',
     illustration: true,
+    squareVariationId: 'AXLXG7ZAI3HRPWEH275G5GXX',
   },
   {
     name: 'Lumberjack Hat',
