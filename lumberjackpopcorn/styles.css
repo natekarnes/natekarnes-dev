@@ -421,6 +421,8 @@ img { max-width: 100%; }
 .qty span { min-width: 1.5em; text-align: center; font-weight: 700; }
 .cart-foot { padding: 20px 24px 28px; border-top: 1px solid var(--line); background: #fff; }
 .cart-subtotal { display: flex; justify-content: space-between; margin: 0 0 4px; font-size: 1.2rem; }
+.cart-shipping { display: flex; justify-content: space-between; margin: 0 0 4px; font-size: 1.05rem; }
+.cart-free-hint { margin: 0 0 8px; color: var(--green); font-weight: 700; font-size: .95rem; }
 .cart-note { margin: 0 0 16px; color: var(--muted); font-size: .95rem; }
 .cart-error { margin: 0 0 12px; padding: 10px 12px; border-radius: 10px; background: #fdecea; color: #8a1f17; font-size: .95rem; }
 .cart-secure { margin: 10px 0 0; text-align: center; color: var(--muted); font-size: .85rem; }

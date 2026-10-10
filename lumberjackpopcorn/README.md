@@ -51,12 +51,15 @@ To switch it on:
 2. In Netlify, under **Site configuration > Environment variables**, add:
    - `SQUARE_ACCESS_TOKEN`: the token (keep it secret; never commit it)
    - `SQUARE_LOCATION_ID`: `4JX3BDE45QNEB`
-   - `SHIPPING_FEE_CENTS`: flat shipping per order in cents (`1000` = $10; `0` = free).
+   - `SHIPPING_FEE_CENTS`: standard shipping per order in cents (`1000` = $10; `0` = free).
      Required: checkout shows an error while it's missing.
+   - Optional: `STICKER_SHIPPING_CENTS` (sticker-only orders, default `300`) and
+     `FREE_SHIPPING_OVER_CENTS` (free shipping at or above this subtotal, default `5000`).
    - `SITE_URL`: `https://lumberjackpopcorn.com`
 3. In `products.js`, set `ONLINE_CHECKOUT = true` and redeploy.
 
-If you change the shipping fee, update the cart note in `shop.html` too.
+If you change any shipping amount, also update `SHIPPING` in `products.js` and the cart note in
+`shop.html` so the cart shows the same numbers Square charges.
 
 While `ONLINE_CHECKOUT` is `false`, every product uses the order request form.
 To sell a new product online, add it in Square, put its item variation ID in

@@ -63,6 +63,17 @@ function renderCart() {
   });
 
   document.getElementById('cart-subtotal').textContent = money(subtotal);
+
+  // Mirrors the shipping rules in netlify/functions/checkout.mjs (which sets the real charge).
+  const stickersOnly = entries.length > 0 && entries.every(([id]) => byId.get(id).category === 'Stickers');
+  let shipping = stickersOnly ? SHIPPING.stickersOnly : SHIPPING.standard;
+  if (subtotal >= SHIPPING.freeOver) shipping = 0;
+  document.getElementById('cart-shipping').textContent = shipping === 0 ? 'Free' : money(shipping);
+  const hint = document.getElementById('cart-free-hint');
+  hint.textContent = shipping > 0 && !stickersOnly
+    ? `Add ${money(SHIPPING.freeOver - subtotal)} more for free shipping.`
+    : '';
+  hint.hidden = !hint.textContent;
   cartDialog.classList.toggle('is-empty', entries.length === 0);
 }
 

@@ -7,24 +7,33 @@
 //   SQUARE_ACCESS_TOKEN   required. From the Square Developer Dashboard. Never commit this.
 //   SQUARE_LOCATION_ID    required. The Square location the orders belong to.
 //   SQUARE_ENVIRONMENT    "production" (default) or "sandbox" for test payments.
-//   SHIPPING_FEE_CENTS    required. Flat shipping charge per order, in cents (e.g. 1000). Use 0 for
-//                         free shipping. Checkout stays off while it's missing.
+//   SHIPPING_FEE_CENTS    required. Standard shipping charge per order, in cents (e.g. 1000). Use 0
+//                         for free shipping. Checkout stays off while it's missing.
+//   STICKER_SHIPPING_CENTS optional. Shipping for sticker-only orders, in cents (default 300).
+//   FREE_SHIPPING_OVER_CENTS optional. Orders with a subtotal at or above this ship free
+//                         (default 5000 = $50). Use 0 to turn free shipping off.
 //   SITE_URL              e.g. https://lumberjackpopcorn.com (falls back to Netlify's URL).
 
-// Items that can be bought online, by Square item variation ID. Keep in sync with products.js.
-const SELLABLE = new Set([
-  'HFUBU2BIG6XBI67C2CSY4NER', // Original Kettle Popcorn
-  'JNMLFY7D7YG5DYABV5NJS4P4', // Salted Caramel Popcorn
-  'KZ3BU6NBZB2AKGRX7KAL7QKP', // Butter Popcorn
-  'KH54HPWGNDE6DG7MYYWDKSH3', // Jalapeño Cheddar Popcorn
-  'AP2JNVKZXUZXBBXRKUGKWVHZ', // White Cheddar Popcorn
-  'ZYNSXG2CCQIGI3VIQ2F7LATQ', // Signature Seasoning (8 oz)
-  'UIIV2ED67RW5PSMXJGLHSOQD', // Lumberjack Logo Sticker
-  'TLJ3NH23AHCYBIUDWT24JCIS', // Bigfoot Bag Hug Sticker
-  '3HUYZFF7EPQNJTJLRF3THC2O', // Bigfoot Cheers Sticker
-  'AXLXG7ZAI3HRPWEH275G5GXX', // Bigfoot Popcorn Gulp Sticker
-  'ECROV4HQOVVIROF4LLR4LWS7', // Enamel Camp Mug
-  'JME7UDDYPCYYUCALP2GXLDAO', // Popcorn Earrings
+// Items that can be bought online, by Square item variation ID, and what kind of item each is
+// (stickers ship cheaper). Keep in sync with products.js.
+const SELLABLE = new Map([
+  ['HFUBU2BIG6XBI67C2CSY4NER', 'popcorn'], // Original Kettle Popcorn
+  ['JNMLFY7D7YG5DYABV5NJS4P4', 'popcorn'], // Salted Caramel Popcorn
+  ['KZ3BU6NBZB2AKGRX7KAL7QKP', 'popcorn'], // Butter Popcorn
+  ['KH54HPWGNDE6DG7MYYWDKSH3', 'popcorn'], // Jalapeño Cheddar Popcorn
+  ['AP2JNVKZXUZXBBXRKUGKWVHZ', 'popcorn'], // White Cheddar Popcorn
+  ['ZYNSXG2CCQIGI3VIQ2F7LATQ', 'seasoning'], // Signature Seasoning (8 oz)
+  ['UIIV2ED67RW5PSMXJGLHSOQD', 'sticker'], // Lumberjack Logo Sticker
+  ['B7X63QTUY7WZAZ7B6IACOEAD', 'sticker'], // Original Kettle Bag Sticker
+  ['UB3PRJSNTQRB7NLYAODTV54O', 'sticker'], // Salted Caramel Bag Sticker
+  ['S6BVKKXLAOQTWCCTFM4OAD2Q', 'sticker'], // Popcorn Trailer Sticker
+  ['TLJ3NH23AHCYBIUDWT24JCIS', 'sticker'], // Bigfoot Bag Hug Sticker
+  ['3HUYZFF7EPQNJTJLRF3THC2O', 'sticker'], // Bigfoot Cheers Sticker
+  ['AXLXG7ZAI3HRPWEH275G5GXX', 'sticker'], // Bigfoot Popcorn Gulp Sticker
+  ['XDDUAZBR4BSYG2EF656CAKXY', 'sticker'], // Bigfoot Lumberjack Sticker (Etcetera Collab)
+  ['ZSHZXW56ECQUUMBO43LQSUZ7', 'sticker'], // Popcorn Bag Buddy Sticker
+  ['ECROV4HQOVVIROF4LLR4LWS7', 'merch'], // Enamel Camp Mug
+  ['JME7UDDYPCYYUCALP2GXLDAO', 'merch'], // Popcorn Earrings
 ]);
 
 const MAX_QTY = 20;
@@ -46,6 +55,41 @@ export function validateItems(items) {
     }
   }
   return null;
+}
+
+// Free over the threshold; otherwise sticker-only orders get the cheaper rate.
+// subtotalCents is null when Square prices couldn't be looked up, which never earns free shipping.
+export function shippingFor(items, subtotalCents, { standardCents, stickerCents, freeOverCents }) {
+  if (freeOverCents > 0 && subtotalCents != null && subtotalCents >= freeOverCents) return 0;
+  if (items.every((i) => SELLABLE.get(i.id) === 'sticker')) return Math.min(stickerCents, standardCents);
+  return standardCents;
+}
+
+// Subtotal in cents using the prices in the Square catalog (not the browser's), or null on failure.
+async function squareSubtotal(items, { base, token }) {
+  try {
+    const res = await fetch(`${base}/v2/catalog/batch-retrieve`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Square-Version': SQUARE_VERSION,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ object_ids: items.map((i) => i.id) }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) return null;
+    const price = new Map((data.objects || []).map((o) => [o.id, o.item_variation_data?.price_money?.amount]));
+    let total = 0;
+    for (const i of items) {
+      const cents = price.get(i.id);
+      if (!Number.isInteger(cents)) return null;
+      total += cents * i.qty;
+    }
+    return total;
+  } catch {
+    return null;
+  }
 }
 
 export function buildPaymentLinkRequest(items, { locationId, siteUrl, shippingCents, idempotencyKey }) {
@@ -96,7 +140,12 @@ export default async (req) => {
     ? 'https://connect.squareupsandbox.com'
     : 'https://connect.squareup.com';
   const siteUrl = env('SITE_URL') || env('URL') || new URL(req.url).origin;
-  const shippingCents = parseInt(shippingRaw, 10);
+  const cents = (k, fallback) => (/^\d+$/.test(env(k)) ? parseInt(env(k), 10) : fallback);
+  const shippingCents = shippingFor(body.items, await squareSubtotal(body.items, { base, token }), {
+    standardCents: parseInt(shippingRaw, 10),
+    stickerCents: cents('STICKER_SHIPPING_CENTS', 300),
+    freeOverCents: cents('FREE_SHIPPING_OVER_CENTS', 5000),
+  });
 
   const payload = buildPaymentLinkRequest(body.items, {
     locationId,

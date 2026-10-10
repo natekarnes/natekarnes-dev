@@ -5,6 +5,10 @@
 // secure payment page. While false, every product uses the order request form instead.
 const ONLINE_CHECKOUT = false;
 
+// Shipping shown in the cart, in dollars. The real charge is set in netlify/functions/checkout.mjs
+// (SHIPPING_FEE_CENTS, STICKER_SHIPPING_CENTS, FREE_SHIPPING_OVER_CENTS), so keep these matching.
+const SHIPPING = { standard: 10, stickersOnly: 3, freeOver: 50 };
+
 //   price:             number in dollars, shown on the site (Square's price is what's charged)
 //   image:             path to a photo, or null to show an icon placeholder
 //   illustration:      true for drawings on a transparent background (shown whole, not cropped)
@@ -81,6 +85,7 @@ const PRODUCTS = [
     description: 'A bag of our Original Kettle popcorn, tied up and ready to go.',
     price: 4,
     image: 'images/stickers/original-kettle-bag.webp',
+    squareVariationId: 'B7X63QTUY7WZAZ7B6IACOEAD',
   },
   {
     name: 'Salted Caramel Bag Sticker',
@@ -88,6 +93,7 @@ const PRODUCTS = [
     description: 'A bag of our Salted Caramel popcorn with the lumberjack front and center.',
     price: 4,
     image: 'images/stickers/salted-caramel-bag.webp',
+    squareVariationId: 'UB3PRJSNTQRB7NLYAODTV54O',
   },
   {
     name: 'Popcorn Trailer Sticker',
@@ -95,6 +101,7 @@ const PRODUCTS = [
     description: 'Our red popcorn trailer, lumberjack and all. Washington grown, fair-season ready.',
     price: 4,
     image: 'images/stickers/trailer.webp',
+    squareVariationId: 'S6BVKKXLAOQTWCCTFM4OAD2Q',
   },
   {
     name: 'Bigfoot Bag Hug Sticker',
@@ -126,6 +133,7 @@ const PRODUCTS = [
     description: 'A collab with our friends at Etcetera in Tacoma. Bigfoot in flannel and jeans, axe at his side, guarding a pile of fresh popcorn.',
     price: 4,
     image: 'images/stickers/bigfoot-lumberjack.webp',
+    squareVariationId: 'XDDUAZBR4BSYG2EF656CAKXY',
   },
   {
     name: 'Popcorn Bag Buddy Sticker',
@@ -133,6 +141,7 @@ const PRODUCTS = [
     description: 'A little brick-built buddy dressed up as a bag of Lumberjack Popcorn.',
     price: 4,
     image: 'images/stickers/bag-buddy.webp',
+    squareVariationId: 'ZSHZXW56ECQUUMBO43LQSUZ7',
   },
   {
     name: 'Lumberjack Hat',
