@@ -83,11 +83,11 @@ const PRODUCTS = [
     image: 'images/stickers/kettle-bag.webp',
   },
   {
-    name: 'Golden Popcorn Bag Sticker',
+    name: 'Salted Caramel Bag Sticker',
     category: 'Stickers',
-    description: 'A bag of golden Lumberjack Popcorn with the lumberjack front and center.',
+    description: 'A bag of our Salted Caramel popcorn with the lumberjack front and center.',
     price: 4,
-    image: 'images/stickers/golden-bag.webp',
+    image: 'images/stickers/salted-caramel-bag.webp',
   },
   {
     name: 'Popcorn Trailer Sticker',
@@ -121,9 +121,9 @@ const PRODUCTS = [
     squareVariationId: 'AXLXG7ZAI3HRPWEH275G5GXX',
   },
   {
-    name: 'Bigfoot Lumberjack Sticker',
+    name: 'Bigfoot Lumberjack Sticker (Etcetera Collab)',
     category: 'Stickers',
-    description: 'Bigfoot in flannel and jeans, axe at his side, guarding a pile of fresh popcorn.',
+    description: 'A collab with our friends at Etcetera in Tacoma. Bigfoot in flannel and jeans, axe at his side, guarding a pile of fresh popcorn.',
     price: 4,
     image: 'images/stickers/bigfoot-lumberjack.webp',
   },
