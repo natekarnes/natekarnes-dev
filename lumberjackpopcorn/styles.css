@@ -159,13 +159,15 @@ img { max-width: 100%; }
 }
 .trusted-list {
   list-style: none; margin: 0; padding: 0;
-  display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 28px;
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 60px;
 }
 .trusted-list li {
+  position: relative;
   font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 1.3rem; color: var(--forest);
 }
+/* The dot sits in the gap between names and takes no space, so hiding it never changes the wrapping. */
 .trusted-list li + li::before {
-  content: "•"; color: var(--olive); margin-right: 28px;
+  content: "•"; color: var(--olive); position: absolute; left: -30px; transform: translateX(-50%);
 }
 .trusted-list li.line-start::before { display: none; }
 .trusted-list .trusted-more { font-family: inherit; font-size: 1.05rem; font-style: italic; color: var(--muted); }
