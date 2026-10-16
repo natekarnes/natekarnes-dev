@@ -5,6 +5,10 @@
 // secure payment page. While false, every product uses the order request form instead.
 const ONLINE_CHECKOUT = false;
 
+// ORDERS_PAUSED: true hides the order form and cart and shows a "taking a short break" message.
+// Products still show so people can browse. Set back to false to take orders again.
+const ORDERS_PAUSED = true;
+
 // Shipping shown in the cart, in dollars. The real charge is set in netlify/functions/checkout.mjs
 // (SHIPPING_FEE_CENTS, STICKER_SHIPPING_CENTS, FREE_SHIPPING_OVER_CENTS), so keep these matching.
 const SHIPPING = { standard: 10, stickersOnly: 3, freeOver: 50 };

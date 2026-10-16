@@ -1,7 +1,7 @@
 const grid = document.getElementById('products');
 const itemsField = document.getElementById('order-items');
 
-const isOnline = (p) => Boolean(ONLINE_CHECKOUT && p.squareVariationId && !p.comingSoon);
+const isOnline = (p) => Boolean(ONLINE_CHECKOUT && !ORDERS_PAUSED && p.squareVariationId && !p.comingSoon);
 const anyOnline = PRODUCTS.some(isOnline);
 const money = (n) => `$${n.toFixed(2)}`;
 
@@ -140,6 +140,7 @@ function productCard(p) {
 
   let label = 'Add to order';
   if (p.comingSoon) label = 'Coming soon';
+  else if (ORDERS_PAUSED) label = 'Orders paused';
   else if (isOnline(p)) label = 'Add to cart';
 
   card.innerHTML = `
@@ -155,7 +156,7 @@ function productCard(p) {
   card.querySelector('.product-desc').textContent = p.description;
 
   const btn = card.querySelector('.product-foot .btn');
-  if (p.comingSoon) {
+  if (p.comingSoon || ORDERS_PAUSED) {
     btn.disabled = true;
   } else if (isOnline(p)) {
     btn.addEventListener('click', () => {
@@ -187,8 +188,11 @@ document.querySelectorAll('.filter').forEach((btn) => {
 });
 
 // ---------- Online vs. offline page copy ----------
-const mode = anyOnline ? 'online' : 'offline';
+let mode = anyOnline ? 'online' : 'offline';
+if (ORDERS_PAUSED) mode = 'paused';
 document.querySelectorAll('[data-when]').forEach((el) => { el.hidden = el.dataset.when !== mode; });
 cartBtn.hidden = !anyOnline;
-itemsField.required = !anyOnline;
+itemsField.required = !anyOnline && !ORDERS_PAUSED;
+// The form stays in the page (Netlify needs it there) but is hidden while orders are paused.
+document.getElementById('order-form').hidden = ORDERS_PAUSED;
 if (anyOnline) renderCart();

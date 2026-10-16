@@ -65,6 +65,10 @@
             <p>We pop online orders fresh once a week and ship them out the same day, so your popcorn shows up tasting like it just came out of the kettle.</p>
           </div>
         </div>
+        <div class="paused-note" data-when="paused" hidden>
+          <strong>Online orders are paused for now.</strong>
+          Browse away, and check back soon, or come see us at the trailer.
+        </div>
         <div class="filters" role="group" aria-label="Filter products">
           <button class="filter is-active" data-filter="all" aria-pressed="true">All</button>
           <button class="filter" data-filter="Popcorn" aria-pressed="false">Popcorn</button>
@@ -81,6 +85,8 @@
         <div>
           <h2 class="section-title" data-when="offline">Your Order</h2>
           <p data-when="offline">Online checkout is coming soon. For now, add items above or type what you'd like below, and we'll reply to confirm your total, payment, and pickup or shipping.</p>
+          <h2 class="section-title" data-when="paused" hidden>Orders Are Paused</h2>
+          <p data-when="paused" hidden>We're taking a short break from online orders. Check back soon, or email us below if you have a question or a big order in mind.</p>
           <h2 class="section-title" data-when="online" hidden>Special Orders &amp; Questions</h2>
           <p data-when="online" hidden>Need a big batch, a flavor that isn't listed, or local pickup instead of shipping? Send us a note and we'll sort it out.</p>
           <div class="side-note">
@@ -89,7 +95,7 @@
           </div>
           <p class="order-email">Questions? Email <a href="mailto:hello@lumberjackpopcorn.com">hello@lumberjackpopcorn.com</a>.</p>
         </div>
-        <form class="form" name="shop-order" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
+        <form class="form" id="order-form" name="shop-order" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="shop-order">
           <p class="hidden"><label>Leave this empty: <input name="bot-field"></label></p>
           <label>Items<span data-when="offline"> *</span>

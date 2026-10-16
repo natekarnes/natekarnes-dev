@@ -63,6 +63,10 @@ If you change any shipping amount, also update `SHIPPING` in `products.js` and t
 `shop.html` so the cart shows the same numbers Square charges.
 
 While `ONLINE_CHECKOUT` is `false`, every product uses the order request form.
+
+To pause all orders, set `ORDERS_PAUSED = true` in `products.js`: the order form and cart are
+hidden, product buttons read "Orders paused", and the shop shows a short-break message. Set it
+back to `false` to take orders again.
 To sell a new product online, add it in Square, put its item variation ID in
 `products.js` (`squareVariationId`), and add the same ID to `SELLABLE` in
 `netlify/functions/checkout.mjs`. `comingSoon: true` shows a product without
