@@ -150,7 +150,7 @@ const PRODUCTS = [
   {
     name: 'Lumberjack Hat',
     category: 'Merch',
-    description: 'A Lumberjack Popcorn Company hat for fair days, camp days, and every day in between.',
+    description: 'A black Flexfit snapback in a wool blend, with LUMBERJACK embroidered across the front (yes, upside down, on purpose). Adult, one size fits all.',
     price: 30,
     image: 'images/hat.jpg',
     comingSoon: true,
