@@ -79,7 +79,7 @@ non-taxable; stickers and merch taxable) once a tax rate is added in Square.
 
 - Prices in `products.js` (popcorn $12, seasonings $8, stickers $4, hat $30,
   mug $12, earrings $10).
-- Product photos: the hat still uses an icon placeholder.
+- Product photos: T-Shirts & Hoodies still use an icon placeholder.
 - Photos in `images/` were cropped from Instagram screenshots; the original
   full-resolution photos will look sharper.
 - `images/logo-white-text.png` (dark backgrounds) and `logo-black-text.png`
